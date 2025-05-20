@@ -6,7 +6,7 @@
 !.gitignore
 !.tmux.conf
 !tmux-lazygit.sh
-
+!dyn-dev.sh
 !.config/
 .config/*
 !.config/nvim/
