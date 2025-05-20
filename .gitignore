@@ -1,0 +1,15 @@
+/*
+
+!.vimrc
+!.zshrc
+!.fzfrc
+!.gitignore
+!.tmux.conf
+!tmux-lazygit.sh
+
+!.config/
+.config/*
+!.config/nvim/
+!scripts/
+
+*-lock*
