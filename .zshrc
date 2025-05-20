@@ -121,4 +121,6 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Enable vim mode
 bindkey -v
+
+# set up alias for dotfiles git repo
 alias dotfiles='/usr/bin/git --git-dir=/Users/magnuspladsen/.dotfiles/ --work-tree=/Users/magnuspladsen'
