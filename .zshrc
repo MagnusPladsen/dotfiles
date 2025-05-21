@@ -120,8 +120,14 @@ source $ZSH/oh-my-zsh.sh
 eval "$(zoxide init --cmd cd zsh)"
 
 # Enable vim mode
-bindkey -v
+# bindkey -v
 
 # set up alias for dotfiles git repo
 # https://www.atlassian.com/git/tutorials/dotfiles
 alias dotfiles='/usr/bin/git --git-dir=/Users/magnuspladsen/.dotfiles/ --work-tree=/Users/magnuspladsen'
+
+# aliases for EZA
+alias ls='eza --icons=always --group-directories-first'
+alias ll='eza -lah --icons=always --group-directories-first'
+alias sauce="source ~/.zshrc && echo '~/.zshrc reloaded'"
+alias t='tmux '
