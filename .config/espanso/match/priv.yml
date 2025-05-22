@@ -1,0 +1,21 @@
+matches:
+  - trigger: ":name"
+    replace: "Magnus Pladsen"
+
+  - trigger: ":mvh"
+    replace: "Med vennlig hilsen,\nMagnus Pladsen\n94812442\nmagnus_pladsen@hotmail.com"
+
+  - trigger: ":mail"
+    replace: "magnus_pladsen@hotmail.com"
+
+  - trigger: ":gmail"
+    replace: "ttarmor97@gmail.com"
+
+  - trigger: ":workmail"
+    replace: "you@example.com"
+
+  - trigger: ":address"
+    replace: "Røyslivegen 6A"
+
+  - trigger: ":zip"
+    replace: "2611, Lillehammer"
