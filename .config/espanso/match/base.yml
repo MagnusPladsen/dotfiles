@@ -1,0 +1,62 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # Wrap in mark down code block
+  - trigger: :mdc
+    replace: "\u0060\u0060\u0060\n$|$\n\u0060\u0060\u0060"
+    force_clipboard: true
+
+  - trigger: ":name"
+    replace: "Magnus Pladsen"
+
+  - trigger: ":mvh"
+    replace: "Med vennlig hilsen,\nMagnus Pladsen\n94812442\nmagnus_pladsen@hotmail.com"
+
+  - trigger: ":mail"
+    replace: "magnus_pladsen@hotmail.com"
+
+  - trigger: ":gmail"
+    replace: "ttarmor97@gmail.com"
+
+  - trigger: ":abarismail"
+    replace: "magnus.pladsen@abaris.no"
+
+  - trigger: ":address"
+    replace: "Røyslivegen 6A"
+
+  - trigger: ":zip"
+    replace: "2611, Lillehammer"
+# And much more! For more information, visit the docs: https://espanso.org/docs/

@@ -10,6 +10,7 @@
 !.config/
 .config/*
 !.config/nvim/
+!.config/espanso/
 !scripts/
 
 *-lock*
