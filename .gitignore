@@ -15,7 +15,7 @@
 !.config/espanso/
 !.config/sketchybar/
 !.config/ghostty/
-!.aerospace.toml
+!.config/aerospace/config.toml
 
 !scripts/
 
