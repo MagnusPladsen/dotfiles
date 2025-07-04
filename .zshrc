@@ -137,3 +137,4 @@ alias ls='eza --icons=always --group-directories-first'
 alias ll='eza -lah --icons=always --group-directories-first'
 alias sauce="source ~/.zshrc && echo '~/.zshrc reloaded'"
 alias t='tmux '
+alias ta='tmux a'
