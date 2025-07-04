@@ -2,9 +2,9 @@ after-startup-command = ['exec-and-forget sketchybar']
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
+  '~/.config/aerospace/pip-move.sh',
   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=0',
-  '~/.config/aerospace/pip-move.sh',
 ]
 
 # Start AeroSpace at login
@@ -82,6 +82,16 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'discord'
+run = 'layout floating'
+
+#PiP firefox
+[[on-window-detected]]
+if.window-title-regex-substring = 'Picture-In-Picture'
+run = 'layout floating'
+
+#PiP Edge
+[[on-window-detected]]
+if.window-title-regex-substring = 'PictureInPicture'
 run = 'layout floating'
 
 # Possible values: (qwerty|dvorak)
