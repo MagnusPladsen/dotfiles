@@ -1,5 +1,6 @@
 font-family = MesloLGS NF
-background-opacity = 0.8
-background-blur-radius = 40
+background-opacity = 0.75
+background-blur-radius = 30
 theme = Monokai Pro Spectrum
 custom-shader = ./shaders/cursor_smear.glsl
+macos-option-as-alt = true
