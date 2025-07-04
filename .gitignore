@@ -10,7 +10,10 @@
 !dyn-dev.sh
 !.config/
 .config/*
+.config/espanso/match/priv.yml
 !.config/nvim/
+!.config/espanso/
+
 !scripts/
 
 *-lock*
