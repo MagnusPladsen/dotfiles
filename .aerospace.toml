@@ -83,6 +83,8 @@ run = 'layout floating'
 if.app-name-regex-substring = 'discord'
 run = 'layout floating'
 
+
+
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]

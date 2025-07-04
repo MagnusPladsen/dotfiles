@@ -3,4 +3,3 @@ background-opacity = 0.75
 background-blur-radius = 30
 theme = Monokai Pro Spectrum
 custom-shader = ./shaders/cursor_smear.glsl
-macos-option-as-alt = true
