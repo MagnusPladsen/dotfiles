@@ -13,6 +13,9 @@
 .config/espanso/match/priv.yml
 !.config/nvim/
 !.config/espanso/
+!.config/sketchybar/
+!.config/ghostty/
+!.config/aerospace/
 
 !scripts/
 
