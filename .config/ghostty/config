@@ -1,0 +1,5 @@
+font-family = MesloLGS NF
+background-opacity = 0.8
+background-blur-radius = 40
+theme = Monokai Pro Spectrum
+custom-shader = ./shaders/cursor_smear.glsl
