@@ -9,10 +9,7 @@ move_to_workspace() {
   window_id=$(aerospace list-windows --all | grep -i "$window_name" | head -n 1 | awk '{print $1}' | tr -d '\n')
 
   if [ -n "$window_id" ]; then
-    echo "Moving '$window_name' (ID: $window_id) to workspace '$workspace'"
     aerospace move-node-to-workspace --window-id "$window_id" "$workspace"
-  else
-    echo "Window '$window_name' not found"
   fi
 }
 
