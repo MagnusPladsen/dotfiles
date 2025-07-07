@@ -1,4 +1,8 @@
-after-startup-command = ['exec-and-forget sketchybar']
+after-startup-command = [
+  'exec-and-forget sketchybar',
+]
+
+
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
@@ -47,6 +51,8 @@ automatically-unhide-macos-hidden-apps = false
 # if.during-aerospace-startup = true
 # check-further-callbacks = true
 # run = ['layout floating', 'move-node-to-workspace S']  # The callback itself
+
+
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'telegram'
@@ -144,6 +150,10 @@ outer.right =      10
 # end tell'
 # '''
 
+
+# Key binding to run the script
+alt-s = 'exec-and-forget ~/.config/aerospace/startup-workspace-setup.sh'
+
 alt-ctrl-shift-f = 'fullscreen'
 alt-ctrl-f = 'layout floating tiling'
 
@@ -195,17 +205,6 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-shift-semicolon = 'mode service'
 alt-shift-enter = 'mode apps'
 
-alt-t = 'exec-and-forget open -a /Applications/Telegram.app'
-alt-a = 'exec-and-forget open -a /Applications/Arc.app'
-alt-o = 'exec-and-forget open -a /Applications/Obsidian.app'
-alt-b = 'exec-and-forget open -a /Applications/Brain.fm.app'
-alt-s = 'exec-and-forget open -a /Applications/Slack.app'
-alt-q = 'exec-and-forget open -a /System/Applications/QuickTime Player.app'
-alt-w = 'exec-and-forget open -a /Applications/WezTerm.app'
-alt-c = 'exec-and-forget open -a /Applications/Claude.app'
-
-
-# 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
