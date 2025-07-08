@@ -1,8 +1,7 @@
+# Launch Sketchybar
 after-startup-command = [
   'exec-and-forget sketchybar',
 ]
-
-
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c',
@@ -50,60 +49,19 @@ automatically-unhide-macos-hidden-apps = false
 # check-further-callbacks = true
 # run = ['layout floating', 'move-node-to-workspace S']  # The callback itself
 
+# Floating windows
 
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'telegram'
-run = 'layout floating'
-
+# Finder 
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'
 run = 'layout floating'
 
-[[on-window-detected]]
-if.app-name-regex-substring = 'safari'
-run = 'layout floating'
- 
-[[on-window-detected]]
-if.app-name-regex-substring = 'camera'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'elgato'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'mail'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'trello'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'quicktime'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Discord'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Messages'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Slack'
-run = 'layout floating'
-
-
-
-#PiP firefox
+# PiP firefox
 [[on-window-detected]]
 if.window-title-regex-substring = 'Picture-In-Picture'
 run = 'layout floating'
 
-#PiP Edge
+# PiP Edge
 [[on-window-detected]]
 if.window-title-regex-substring = 'PictureInPicture'
 run = 'layout floating'
@@ -159,7 +117,7 @@ outer.right =      10
 # '''
 
 
-# Key binding to run the script
+# Key binding to run window layout cinfig from script
 alt-s = 'exec-and-forget ~/.config/aerospace/startup-workspace-setup.sh'
 
 alt-ctrl-shift-f = 'fullscreen'
@@ -197,6 +155,9 @@ alt-3 = 'workspace 3'
 alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1 --focus-follows-window'
@@ -205,6 +166,9 @@ alt-shift-3 = 'move-node-to-workspace 3 --focus-follows-window'
 alt-shift-4 = 'move-node-to-workspace 4 --focus-follows-window'
 alt-shift-5 = 'move-node-to-workspace 5 --focus-follows-window'
 alt-shift-6 = 'move-node-to-workspace 6 --focus-follows-window'
+alt-shift-7 = 'move-node-to-workspace 7 --focus-follows-window'
+alt-shift-8 = 'move-node-to-workspace 8 --focus-follows-window'
+alt-shift-9 = 'move-node-to-workspace 9 --focus-follows-window'
 
 alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
