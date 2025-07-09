@@ -66,6 +66,11 @@ run = 'layout floating'
 if.window-title-regex-substring = 'PictureInPicture'
 run = 'layout floating'
 
+# PiP Edge
+[[on-window-detected]]
+if.window-title-regex-substring = 'Huddle:'
+run = 'layout floating'
+
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
