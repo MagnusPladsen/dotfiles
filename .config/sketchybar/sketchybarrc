@@ -49,6 +49,23 @@ sketchybar --bar height=30 \
 #source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
 
+# Right: Clock
+sketchybar --add item clock right \
+                     --set clock update_freq=10 \
+                     label.font="$FONT:Semibold:13.0" \
+                     label.color=$LABEL_COLOR \
+                     script="$PLUGIN_DIR/clock.sh" \
+                     background.padding_left=10 \
+                     background.padding_right=10
+# Right: Battery
+sketchybar --add item battery right \
+                     --set battery update_freq=60 \
+                     label.font="$FONT:Semibold:13.0" \
+                     label.color=$LABEL_COLOR \
+                     script="$PLUGIN_DIR/battery.sh" \
+                     background.padding_left=10 \
+                     background.padding_right=10
+
 # Center
 # source "$ITEM_DIR/spotify.sh"
 
