@@ -7,13 +7,13 @@ for sid in $(aerospace list-workspaces --all); do
     --subscribe "space.$sid" aerospace_workspace_change \
     --set "space.$sid" \
     icon="$sid" \
-    icon.padding_left=22 \
-    icon.padding_right=22 \
-    label.padding_right=33 \
+    icon.padding_left=10 \
+    icon.padding_right=10 \
+    label.padding_right=10 \
     icon.highlight_color=$RED \
     background.color=0x44ffffff \
-    background.corner_radius=5 \
-    background.height=30 \
+    background.corner_radius=100 \
+    background.height=25 \
     background.drawing=off \
     label.font="sketchybar-app-font:Regular:16.0" \
     label.background.height=30 \
