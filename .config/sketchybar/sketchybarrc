@@ -21,11 +21,11 @@ sketchybar --bar height=30 \
                      color=$BAR_COLOR \
                      shadow=$SHADOW \
                      sticky=on \
-                     padding_right=10 \
-                     padding_left=10 \
-                     corner_radius=7 \
-                     y_offset=10 \
-                     margin=10 \
+                     padding_right=20 \
+                     padding_left=20 \
+                     corner_radius=0 \
+                     y_offset=0 \
+                     margin=0 \
                      blur_radius=20 \
                      \
                      --default updates=when_shown \
