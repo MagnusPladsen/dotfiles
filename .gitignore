@@ -17,6 +17,8 @@
 !.config/ghostty/
 !.config/aerospace/
 !.config/borders/
+!install_sketchybar.sh
+!install_aerospace.sh
 
 !scripts/
 
