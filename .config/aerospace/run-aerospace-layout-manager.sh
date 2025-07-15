@@ -13,15 +13,6 @@ fi
 for layout in $layouts; do
   echo "Running layout: $layout"
   aerospace-layout-manager "$layout"
-
-  # Conditional sleep delay, chat layout takes long to complete
-  if [ "$layout" == "chat" ]; then
-    echo "Applying 'chat' layout, sleeping for 3 seconds..."
-    sleep 3
-  else
-    echo "Applying other layout, sleeping for 0.5 seconds..."
-    sleep 0.5
-  fi
 done
 
 echo "All layouts applied successfully!"
