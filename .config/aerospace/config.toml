@@ -1,7 +1,7 @@
 # Launch Sketchybar
 after-startup-command = [
   'exec-and-forget sketchybar',
-  'exec-and-forget borders',
+  'exec-and-forget ',
 ]
 
 # Notify Sketchybar about workspace change
