@@ -1,0 +1,78 @@
+{
+  "stashWorkspace": "S",
+  "layouts": {
+    "browser": {
+      "workspace": "1",
+      "layout": "tiles",
+      "windows": [
+        {
+          "bundleId": "app.zen-browser.zen"
+        }
+      ]
+    },
+    "div": {
+      "workspace": "2",
+      "layout": "h_tiles",
+      "windows": [
+        {
+          "bundleId": "com.spotify.client",
+          "size": "1/2"
+        },
+        {
+          "bundleId": "md.obsidian",
+          "size": "1/2"
+        }
+      ]
+    },
+    "chat": {
+      "workspace": "3",
+      "layout": "h_tiles",
+      "windows": [
+        {
+          "orientation": "horizontal",
+          "windows": [
+            {
+              "bundleId": "com.facebook.archon",
+              "size": "1/2"
+            },
+            {
+              "bundleId": "com.tinyspeck.slackmacgap",
+              "size": "1/2"
+            }
+          ]
+        },
+        {
+          "orientation": "horizontal",
+          "windows": [
+            {
+              "bundleId": "com.apple.MobileSMS",
+              "size": "1/2"
+            },
+            {
+              "bundleId": "com.hnc.Discord",
+              "size": "1/2"
+            }
+          ]
+        }
+      ]
+    },
+    "terminal": {
+      "workspace": "4",
+      "windows": [
+        {
+          "bundleId": "com.mitchellh.ghostty"
+        }
+      ]
+    },
+    "devtools": {
+      "workspace": "5",
+      "layout": "h_tiles",
+      "windows": [
+        {
+          "bundleId": "com.microsoft.rdc.macos",
+          "size": "1/2"
+        }
+      ]
+    }
+  }
+}
