@@ -1,13 +1,15 @@
 # Launch Sketchybar
 after-startup-command = [
   'exec-and-forget sketchybar',
-  'exec-and-forget borders'
+  'exec-and-forget borders',
 ]
 
 # Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c',
-  '~/.config/aerospace/pip-move.sh && sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
-]
+#exec-on-workspace-change = ['/bin/bash', '-c',
+# '~/.config/aerospace/pip-move.sh && sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+#]
+
+exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE && ~/.config/sketchybar/plugins/update_workspace_icons.sh']
 
 # Start AeroSpace at login
 start-at-login = true
@@ -90,13 +92,22 @@ inner.horizontal = 10
 inner.vertical =   10
 outer.left =       10
 outer.bottom =     10
-outer.top =        [{monitor.main = 20 }, 10] # Compensates the extra margin from the notch on macbooks
- outer.right =      10
+outer.top =        [{monitor.main = 20 }, 50] # Compensates the extra margin from the notch on macbooks
+outer.right =      10
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 # Fallback value (if you omit the key): mode.main.binding = {}
+
+
+[workspace-to-monitor-force-assignment]
+1 = "main"
+2 = "main"
+3 = "main"
+4 = [2, "secondary"]
+5 = [2, "secondary"]
+
 [mode.main.binding]
 
 # All possible keys:
@@ -125,7 +136,7 @@ outer.top =        [{monitor.main = 20 }, 10] # Compensates the extra margin fro
 
 
 # Key binding to run window layout cinfig from script
-alt-s = 'exec-and-forget ~/.config/aerospace/startup-workspace-setup.sh'
+alt-s = 'exec-and-forget ~/.config/aerospace/run-aerospace-layout-manager.sh'
 
 # Reload AeroSpace config
 alt-shift-r = 'reload-config'

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Not in use anymore. I'm currenlty using aerospace-layout-manager. See run-aerospace-layout-manager.sh
+
 # Function to move a window to a workspace
 move_to_workspace() {
   local window_name="$1"
@@ -14,33 +16,37 @@ move_to_workspace() {
 tile_windows() {
   local workspace="$1"
   aerospace layout horizontal
-  aerospace move --window-id "$(aerospace list-windows --workspace "$workspace" | grep -i "Messenger" | awk '{print $1}')" "left"
-  aerospace focus --window-id "$(aerospace list-windows --workspace "$workspace" | grep -i "Messages" | awk '{print $1}')"
-  aerospace join-with left
-  aerospace move --window-id "$(aerospace list-windows --workspace "$workspace" | grep -i "Slack" | awk '{print $1}')" "right"
-  aerospace focus --window-id "$(aerospace list-windows --workspace "$workspace" | grep -i "Discord" | awk '{print $1}')"
-  aerospace join-with right
-  echo "Tiling on workspace $1 is done "
+
+  # Messages bottom left
+  move_to_workspace "Messages" "$workspace"
+  sleep 0.2
+
+  # Discord bottom right
+  move_to_workspace "Discord" "$workspace"
+  sleep 0.2
+
+  # Messenger top left
+  move_to_workspace "Messenger" "$workspace"
+  aerospace move --window-id "$(aerospace list-windows --workspace "$workspace" | grep -i "Messenger" | awk '{print $1}')" left
+  aerospace join-with --window-id "$(aerospace list-windows --workspace "$workspace" | grep -i "Messenger" | awk '{print $1}')" left
+  sleep 0.2
+
+  # Slack top right
+  move_to_workspace "Slack" "$workspace"
+  sleep 0.2
+
+  aerospace join-with --window-id "$(aerospace list-windows --workspace "$workspace" | grep -i "Messages" | awk '{print $1}')" left
+  aerospace join-with --window-id "$(aerospace list-windows --workspace "$workspace" | grep -i "Discord" | awk '{print $1}')" right
+
+  echo "Tiling on workspace $workspace is done "
 }
 
-# Move Space 5 to the non-built-in monitor
-non_built_in_monitor=$(aerospace list-monitors | grep -v "Built-In" | awk '{print $1}')
-if [ -n "$non_built_in_monitor" ]; then
-  aerospace move-workspace-to-monitor --wrap-around --workspace "5" next
-else
-  echo "Non-built-in monitor not found. Space 5 will remain on the current monitor."
-fi
-
-# Clean workspace names (no spaces)
+# Setup apps in correct workspaces
 move_to_workspace "Zen" "1"
-move_to_workspace "Ghostty" "2"
 move_to_workspace "Obsidian" "2"
-move_to_workspace "Docker Desktop" "2"
-move_to_workspace "Discord" "3"
-move_to_workspace "Messenger" "3"
-move_to_workspace "Slack" "3"
-move_to_workspace "Messages" "3"
-move_to_workspace "Spotify" "4"
+move_to_workspace "Spotify" "2"
+move_to_workspace "Ghostty" "4"
+move_to_workspace "Docker Desktop" "5"
 move_to_workspace "Rider" "5"
 move_to_workspace "Windows App" "5"
 
