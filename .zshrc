@@ -138,3 +138,6 @@ alias ll='eza -lah --icons=always --group-directories-first'
 alias sauce="source ~/.zshrc && echo '~/.zshrc reloaded'"
 alias t='tmux '
 alias ta='tmux a'
+alias macos='pkill AeroSpace sketchybar borders'
+alias tiles='open -a "AeroSpace" && ~/.config/aerospace/run-aerospace-layout-manager.sh'
+alias pattymode='pkill AeroSpace sketchybar && open -a "Google Chrome"'
