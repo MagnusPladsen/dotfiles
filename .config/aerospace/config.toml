@@ -69,10 +69,14 @@ run = 'layout floating'
 if.window-title-regex-substring = 'PictureInPicture'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.window-title-regex-substring = 'Proton Mail'
+run = 'layout floating'
+
 # Slack Huddle
 [[on-window-detected]]
 if.app-name-regex-substring = 'Slack'
-if.window-title-regex-substring = 'Huddle:'
+if.window-title-regex-substring = 'Huddle'
 run = 'layout floating'
 
 # Possible values: (qwerty|dvorak)
