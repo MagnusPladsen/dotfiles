@@ -136,8 +136,9 @@ eval "$(fzf --zsh)"
 alias dotfiles='/usr/bin/git --git-dir=/Users/magnuspladsen/.dotfiles/ --work-tree=/Users/magnuspladsen'
 
 # aliases for EZA
-alias ls='eza --icons=always --group-directories-first'
+alias ls='eza --icons=always --long --git --no-filesize --no-time --no-user --no-permissions --group-directories-first'
 alias ll='eza -lah --icons=always --group-directories-first'
+alias tree='eza --tree --level=2'
 alias sauce="source ~/.zshrc && echo '~/.zshrc reloaded'"
 alias t='tmux '
 alias ta='tmux a'
