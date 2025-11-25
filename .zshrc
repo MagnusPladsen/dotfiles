@@ -1,4 +1,5 @@
 export PATH="$HOME/Library/Python/3.11/bin:$PATH"
+export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -193,3 +194,7 @@ _fzf_comprun() {
 
 # thefuck alias
 eval $(thefuck --alias)
+
+# bat as default git pager
+#export GIT_PAGER="bat --color=always --paging=never"
+
