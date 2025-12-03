@@ -1,0 +1,33 @@
+gui:
+  switchTabsWithPanelJumpKeys: true
+  # MONOKAI PRO SPECTRUM
+  theme:
+    activeBorderColor:
+      - "#5AD4E6"
+      - bold
+    inactiveBorderColor:
+      - "#948AE3"
+    searchingActiveBorderColor:
+      - "#FCE566"
+      - bold
+    optionsTextColor:
+      - "#7C7C7C"
+    selectedLineBgColor:
+      - "#363537"
+    inactiveViewSelectedLineBgColor:
+      - bold
+    cherryPickedCommitFgColor:
+      - "#363537"
+    cherryPickedCommitBgColor:
+      - "#5AD4E6"
+    markedBaseCommitFgColor:
+      - "#5AD4E6"
+    markedBaseCommitBgColor:
+      - "#FCE566"
+    unstagedChangesColor:
+      - "#FC618D"
+    defaultFgColor:
+      - "#F7F1FF"
+git:
+  pagers:
+    - pager: delta --dark --paging=never
