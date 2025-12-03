@@ -148,6 +148,7 @@ alias ta='tmux a'
 alias macos='pkill AeroSpace sketchybar borders'
 alias tiles='open -a "AeroSpace" && ~/.config/aerospace/run-aerospace-layout-manager.sh'
 alias pattymode='pkill AeroSpace sketchybar && open -a "Google Chrome"'
+alias git-merge='git mergetool --tool=nvimdiff --no-prompt'
 
 # opencode
 export PATH=/Users/magnuspladsen/.opencode/bin:$PATH
