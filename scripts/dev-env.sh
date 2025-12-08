@@ -20,6 +20,10 @@ if [ $? != 0 ]; then
   tmux new-window -t $SESH -n "repo"
   tmux send-keys -t $SESH:repo "cd $DIR" C-m
 
+  tmux new-window -t $SESH -n "claude"
+  tmux send-keys -t $SESH:claude "cd $DIR" C-m
+  tmux send-keys -t $SESH:claude "claude" C-m
+
   tmux select-window -t $SESH:nvim
 fi
 
