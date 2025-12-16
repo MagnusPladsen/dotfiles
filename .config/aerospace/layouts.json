@@ -32,10 +32,6 @@
           "orientation": "horizontal",
           "windows": [
             {
-              "bundleId": "com.facebook.archon",
-              "size": "1/2"
-            },
-            {
               "bundleId": "com.tinyspeck.slackmacgap",
               "size": "1/2"
             }
@@ -60,7 +56,7 @@
       "workspace": "4",
       "windows": [
         {
-          "bundleId": "com.mitchellh.ghostty"
+          "bundleId": "net.kovidgoyal.kitty"
         }
       ]
     },
