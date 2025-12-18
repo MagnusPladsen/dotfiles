@@ -18,6 +18,7 @@
 !.config/aerospace/
 !.config/borders/
 !.config/lazygit/
+!.config/zed/
 !install_sketchybar.sh
 !install_aerospace.sh
 !fzf-git.sh/
