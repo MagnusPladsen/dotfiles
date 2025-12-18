@@ -10,6 +10,7 @@
     "context": "Workspace",
     "bindings": {
       // "shift shift": "file_finder::Toggle"
+      "ctrl-s": "workspace::Save",
     },
   },
   {
@@ -22,15 +23,44 @@
     "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
       "space o": "tab_switcher::Toggle",
+      "space f f": "pane::DeploySearch",
+      "space f g": "file_finder::Toggle",
+      "space d": "diagnostics::Deploy",
+      "space a": "editor::ToggleCodeActions",
+      "space b d": "pane::CloseActiveItem",
+      "space l g": "terminal_panel::ToggleFocus",
+      "] b": "pane::ActivateNextItem",
+      "[ b": "pane::ActivatePrevItem",
+      "g D": "editor::GoToDeclaration",
+      "space shift-o": "editor::OpenExcerpts",
+    },
+  },
+  {
+    "context": "TabSwitcher",
+    "bindings": {
+      "ctrl-w": "tab_switcher::CloseSelectedItem",
+      "x": "tab_switcher::CloseSelectedItem",
     },
   },
   {
     "context": "Dock || Terminal || Editor",
     "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-w ctrl-k": "terminal_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-w ctrl-k": "editor::ToggleFocus",
     },
   },
 ]

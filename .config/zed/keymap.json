@@ -27,6 +27,12 @@
       "space f g": "file_finder::Toggle",
       "space d": "diagnostics::Deploy",
       "space a": "editor::ToggleCodeActions",
+      "space b d": "pane::CloseActiveItem",
+      "space l g": "terminal_panel::ToggleFocus",
+      "] b": "pane::ActivateNextItem",
+      "[ b": "pane::ActivatePreviousItem",
+      "g D": "editor::GoToDeclaration",
+      "space shift-o": "editor::OpenExcerpts",
     },
   },
   {
