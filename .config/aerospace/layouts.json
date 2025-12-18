@@ -62,11 +62,10 @@
     },
     "devtools": {
       "workspace": "5",
-      "layout": "h_tiles",
+      "layout": "tiles",
       "windows": [
         {
-          "bundleId": "com.microsoft.rdc.macos",
-          "size": "1/2"
+          "bundleId": "dev.zed.Zed"
         }
       ]
     }
