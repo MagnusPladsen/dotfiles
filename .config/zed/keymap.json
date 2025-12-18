@@ -23,6 +23,8 @@
     "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
       "space o": "tab_switcher::Toggle",
+      "space f f": "pane::DeploySearch",
+      "space f g": "file_finder::Toggle",
     },
   },
   {

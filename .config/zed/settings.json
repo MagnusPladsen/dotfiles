@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "tab_bar": {
-    "show": false
+    "show": true
   },
   "autosave": {
     "after_delay": {
@@ -33,7 +33,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "KTRZ Monokai",
+    "dark": "One Dark Pro",
   },
   "lsp": {
     "omnisharp": {
