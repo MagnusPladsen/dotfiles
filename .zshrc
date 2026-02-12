@@ -220,11 +220,9 @@ export ANDROID_ADB_SERVER_PORT=5038
 # Use it like this:
 # wt feature-name
 wt() {
-    # Exit immediately on error
-    set -e
-
     # Get the current Git project directory (must be inside a Git repo)
-    local project_dir=$(git rev-parse --show-toplevel)
+    local project_dir
+    project_dir=$(git rev-parse --show-toplevel) || { echo "❌ Not inside a Git repository."; return 1; }
 
     # Get the base name of the current project folder
     local project_name=$(basename "$project_dir")
@@ -247,8 +245,31 @@ wt() {
     # Create the parent worktrees folder if it doesn't exist
     mkdir -p "$worktree_parent"
 
-    # Create the worktree and the branch
-    git -C "$project_dir" worktree add -b "$feature_name" "$worktree_path"
+    # If the folder already exists, check if it's a worktree for a different branch
+    if [ -d "$worktree_path" ]; then
+        local existing_branch
+        existing_branch=$(git -C "$worktree_path" rev-parse --abbrev-ref HEAD 2>/dev/null) || existing_branch=""
+
+        if [ "$existing_branch" = "$feature_name" ]; then
+            echo "✅ Worktree '$feature_name' already exists at $worktree_path"
+        else
+            echo "🔄 Folder exists with branch '${existing_branch:-none}', replacing with '$feature_name'..."
+            # Try git worktree remove first; if that fails (not a registered worktree), just delete the folder
+            if ! git -C "$project_dir" worktree remove --force "$worktree_path" 2>/dev/null; then
+                rm -rf "$worktree_path"
+            fi
+            git -C "$project_dir" worktree prune
+        fi
+    fi
+
+    # Create the worktree if the folder doesn't exist (either never existed or was just removed)
+    if [ ! -d "$worktree_path" ]; then
+        if git -C "$project_dir" show-ref --verify --quiet "refs/heads/$feature_name"; then
+            git -C "$project_dir" worktree add "$worktree_path" "$feature_name" || { echo "❌ Failed to create worktree."; return 1; }
+        else
+            git -C "$project_dir" worktree add -b "$feature_name" "$worktree_path" || { echo "❌ Failed to create worktree."; return 1; }
+        fi
+    fi
 
     # Copy all gitignored dotfiles and dotfolders into the worktree
     for item in "$project_dir"/.*; do
