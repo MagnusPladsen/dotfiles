@@ -154,6 +154,12 @@ alias bupgrade='brew upgrade'
 # opencode
 export PATH=/Users/magnuspladsen/.opencode/bin:$PATH
 
+# android simulator
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 # -- Use fd instead of fzf --
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
@@ -201,3 +207,74 @@ eval $(thefuck --alias)
 #export GIT_PAGER="bat --color=always --paging=never"
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Azure DevOps PR shortcut for fraktas-app
+azpr() {
+  open "https://dev.azure.com/fraktas/markedsplass/_git/fraktas-app/pullrequestcreate?sourceRef=$(git branch --show-current)&targetRef=${1:-main}"
+}
+
+# Use port 5038 for ADB to avoid conflict with backend on 5037
+export ANDROID_ADB_SERVER_PORT=5038
+
+# Git worktree helper function.
+# Use it like this:
+# wt feature-name
+wt() {
+    # Exit immediately on error
+    set -e
+
+    # Get the current Git project directory (must be inside a Git repo)
+    local project_dir=$(git rev-parse --show-toplevel)
+
+    # Get the base name of the current project folder
+    local project_name=$(basename "$project_dir")
+
+    # Get the desired feature/branch name from the first argument
+    local feature_name="$1"
+
+    # Fail fast if no feature name was provided
+    if [ -z "$feature_name" ]; then
+        echo "❌ Usage: wt <feature-name>"
+        return 1
+    fi
+
+    # Define the parent folder where all worktrees go, beside the main repo
+    local worktree_parent="$(dirname "$project_dir")/${project_name}-worktrees"
+
+    # Define the full path of the new worktree folder
+    local worktree_path="${worktree_parent}/${feature_name}"
+
+    # Create the parent worktrees folder if it doesn't exist
+    mkdir -p "$worktree_parent"
+
+    # Create the worktree and the branch
+    git -C "$project_dir" worktree add -b "$feature_name" "$worktree_path"
+
+    # Copy all gitignored dotfiles and dotfolders into the worktree
+    for item in "$project_dir"/.*; do
+        local name=$(basename "$item")
+        # Skip . , .. , and .git
+        [[ "$name" == "." || "$name" == ".." || "$name" == ".git" ]] && continue
+        if git -C "$project_dir" check-ignore -q "$item" 2>/dev/null; then
+            if [ -d "$item" ]; then
+                cp -R "$item" "$worktree_path/$name"
+                echo "📁 Copied $name into worktree."
+            elif [ -f "$item" ]; then
+                cp "$item" "$worktree_path/$name"
+                echo "📋 Copied $name into worktree."
+            fi
+        fi
+    done
+
+    # Open the worktree in Zed, fallback to VS Code
+    if command -v zed &> /dev/null; then
+        zed "$worktree_path" &
+    elif command -v code &> /dev/null; then
+        code "$worktree_path" &
+    else
+        echo "⚠️  Neither Zed nor VS Code found. Open manually: $worktree_path"
+    fi
+
+    # Confirm success
+    echo "✅ Worktree '$feature_name' created at $worktree_path and checked out."
+}
