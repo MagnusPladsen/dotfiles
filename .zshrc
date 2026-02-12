@@ -266,6 +266,20 @@ wt() {
         fi
     done
 
+    # Copy gitignored environment config files (e.g. appsettings.Development.json)
+    # from anywhere in the project tree, preserving directory structure
+    # Covers: .NET, JS/TS, React, Svelte, Spring Boot, Django, Docker, Cloudflare
+    local config_files
+    config_files=$(git -C "$project_dir" ls-files --others --ignored --exclude-standard 2>/dev/null | \
+        grep -iE '(appsettings\..+\.json$|\.env(\.|$)|local\.settings\.json$|secrets\.json$|\.user$|docker-compose\.override\.ya?ml$|application-.+\.(properties|ya?ml)$|local_settings\.py$|\.dev\.vars$|wrangler\.toml$)') || true
+    if [ -n "$config_files" ]; then
+        echo "$config_files" | while IFS= read -r file; do
+            mkdir -p "$worktree_path/$(dirname "$file")"
+            cp "$project_dir/$file" "$worktree_path/$file"
+            echo "📋 Copied $file into worktree."
+        done
+    fi
+
     # Open the worktree in Zed, fallback to VS Code
     if command -v zed &> /dev/null; then
         zed "$worktree_path" &
