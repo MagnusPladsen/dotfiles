@@ -313,3 +313,45 @@ wt() {
     # Confirm success
     echo "✅ Worktree '$feature_name' created at $worktree_path and checked out."
 }
+
+wt-close() {
+    # Get the current Git project directory (must be inside a Git repo)
+    local project_dir
+    project_dir=$(git rev-parse --show-toplevel) || { echo "❌ Not inside a Git repository."; return 1; }
+
+    local project_name=$(basename "$project_dir")
+    local feature_name="$1"
+
+    if [ -z "$feature_name" ]; then
+        echo "❌ Usage: wt-close <feature-name>"
+        return 1
+    fi
+
+    local worktree_parent="$(dirname "$project_dir")/${project_name}-worktrees"
+    local worktree_path="${worktree_parent}/${feature_name}"
+
+    # Check if the folder exists at all
+    if [ ! -d "$worktree_path" ]; then
+        echo "❌ No worktree folder found at $worktree_path"
+        return 1
+    fi
+
+    # Don't allow closing the worktree we're currently inside
+    local current_dir=$(pwd -P)
+    if [[ "$current_dir" == "$worktree_path"* ]]; then
+        echo "❌ You are inside this worktree. cd out of it first."
+        return 1
+    fi
+
+    # Try git worktree remove (handles both clean and --force cases)
+    if git -C "$project_dir" worktree remove "$worktree_path" 2>/dev/null; then
+        echo "✅ Worktree '$feature_name' removed."
+    elif git -C "$project_dir" worktree remove --force "$worktree_path" 2>/dev/null; then
+        echo "✅ Worktree '$feature_name' force-removed (had uncommitted changes)."
+    else
+        # Not a registered worktree, just a leftover folder
+        rm -rf "$worktree_path"
+        git -C "$project_dir" worktree prune
+        echo "✅ Removed leftover folder '$feature_name' and pruned worktree list."
+    fi
+}
