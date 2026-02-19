@@ -150,6 +150,7 @@ alias tiles='open -a "AeroSpace" && ~/.config/aerospace/run-aerospace-layout-man
 alias pattymode='pkill AeroSpace sketchybar && open -a "Google Chrome"'
 alias git-merge='git mergetool --tool=nvimdiff --no-prompt'
 alias bupgrade='brew upgrade'
+alias claude-notes='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Obsidian\ Vault && claude --dangerously-skip-permissions'
 
 # opencode
 export PATH=/Users/magnuspladsen/.opencode/bin:$PATH
@@ -267,7 +268,8 @@ wt() {
         if git -C "$project_dir" show-ref --verify --quiet "refs/heads/$feature_name"; then
             git -C "$project_dir" worktree add "$worktree_path" "$feature_name" || { echo "❌ Failed to create worktree."; return 1; }
         else
-            git -C "$project_dir" worktree add -b "$feature_name" "$worktree_path" || { echo "❌ Failed to create worktree."; return 1; }
+            git -C "$project_dir" fetch origin main && \
+            git -C "$project_dir" worktree add -b "$feature_name" "$worktree_path" origin/main || { echo "❌ Failed to create worktree."; return 1; }
         fi
     fi
 
@@ -355,3 +357,6 @@ wt-close() {
         echo "✅ Removed leftover folder '$feature_name' and pruned worktree list."
     fi
 }
+
+# Added by CodeRabbit CLI installer
+export PATH="/Users/magnuspladsen/.local/bin:$PATH"
