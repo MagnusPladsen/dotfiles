@@ -115,6 +115,11 @@ outer.right =      10
 3 = "main"
 4 = [2, "secondary"]
 5 = [2, "secondary"]
+6 = [2, "secondary"]
+7 = [2, "secondary"]
+8 = [2, "secondary"]
+9 = [2, "secondary"]
+10 = [2, "secondary"]
 
 [mode.main.binding]
 
