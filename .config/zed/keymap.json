@@ -1,67 +1,11 @@
-// Zed keymap
-//
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-  // To see the default key bindings run `zed: open default keymap`
-// from the command palette.
 [
-  {
-    "context": "Workspace",
-    "bindings": {
-      // "shift shift": "file_finder::Toggle"
-      "ctrl s": "workspace::Save",
-      "ctrl w": "pane::CloseActiveItem"
-    },
-  },
-  {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      // "j k": "vim::NormalBefore",
-    },
-  },
-  {
-    "context": "Editor && VimControl && !VimWaiting && !menu",
-    "bindings": {
-      "space o": "tab_switcher::Toggle",
-      "space f f": "pane::DeploySearch",
-      "space f g": "file_finder::Toggle",
-      "space d": "diagnostics::Deploy",
-      "space a": "editor::ToggleCodeActions",
-      "space b d": "pane::CloseActiveItem",
-      "space l g": "terminal_panel::ToggleFocus",
-      "] b": "pane::ActivateNextItem",
-      "[ b": "pane::ActivatePreviousItem",
-      "g D": "editor::GoToDeclaration",
-      "space shift-o": "editor::OpenExcerpts",
-    },
-  },
-  {
-    "context": "TabSwitcher",
-    "bindings": {
-      "ctrl-w": "tab_switcher::CloseSelectedItem",
-      "x": "tab_switcher::CloseSelectedItem",
-    },
-  },
-  {
-    "context": "Dock || Terminal || Editor",
-    "bindings": {
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown",
-    },
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "ctrl-w ctrl-k": "terminal_panel::ToggleFocus",
-    },
-  },
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-w ctrl-k": "editor::ToggleFocus",
-    },
-  },
+      "shift-enter": [
+        "terminal::SendText",
+        "\u001b\r"
+      ]
+    }
+  }
 ]

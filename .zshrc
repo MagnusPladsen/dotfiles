@@ -268,8 +268,7 @@ wt() {
         if git -C "$project_dir" show-ref --verify --quiet "refs/heads/$feature_name"; then
             git -C "$project_dir" worktree add "$worktree_path" "$feature_name" || { echo "❌ Failed to create worktree."; return 1; }
         else
-            git -C "$project_dir" fetch origin main && \
-            git -C "$project_dir" worktree add -b "$feature_name" "$worktree_path" origin/main || { echo "❌ Failed to create worktree."; return 1; }
+            git -C "$project_dir" worktree add -b "$feature_name" "$worktree_path" || { echo "❌ Failed to create worktree."; return 1; }
         fi
     fi
 
