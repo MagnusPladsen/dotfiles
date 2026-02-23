@@ -1,10 +1,28 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# make sure it's executable with:
-# chmod +x ~/.config/sketchybar/plugins/aerospace.sh
+# AeroSpace workspace focus handler — Tokyo Night colors
+source "$CONFIG_DIR/colors.sh"
 
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
-  sketchybar --set $NAME background.color=0xff597281 label.shadow.drawing=on icon.shadow.drawing=on background.border_width=2
+  sketchybar --set $NAME \
+    background.color=$SPACE_ACTIVE \
+    background.border_width=0 \
+    icon.color=0xff1a1b26 \
+    label.color=$WHITE
 else
-  sketchybar --set $NAME background.color=0x44FFFFFF label.shadow.drawing=off icon.shadow.drawing=off background.border_width=0
+  # Check if workspace has windows
+  apps=$(aerospace list-windows --workspace "$1" 2>/dev/null | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+  if [ -n "$apps" ]; then
+    sketchybar --set $NAME \
+      background.color=$SPACE_OCCUPIED \
+      background.border_width=0 \
+      icon.color=$WHITE \
+      label.color=$DIM
+  else
+    sketchybar --set $NAME \
+      background.color=$SPACE_EMPTY \
+      background.border_width=0 \
+      icon.color=$DIM \
+      label.color=$DIM
+  fi
 fi

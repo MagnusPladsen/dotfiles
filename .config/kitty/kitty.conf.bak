@@ -1,0 +1,15 @@
+
+# Font settings
+font_family JetBrains Mono
+font_size 13
+bold_font no
+
+# Cursor settings
+cursor_trail 1
+
+# Background settings
+background_opacity 0.60
+background_blur 30
+
+# Theme
+#include monokai-pro-spectrum.conf

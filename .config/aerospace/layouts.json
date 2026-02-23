@@ -10,16 +10,16 @@
         }
       ]
     },
-    "div": {
+    "media": {
       "workspace": "2",
       "layout": "h_tiles",
       "windows": [
         {
-          "bundleId": "com.spotify.client",
+          "bundleId": "com.apple.MobileSMS",
           "size": "1/2"
         },
         {
-          "bundleId": "md.obsidian",
+          "bundleId": "com.spotify.client",
           "size": "1/2"
         }
       ]
@@ -29,43 +29,35 @@
       "layout": "h_tiles",
       "windows": [
         {
-          "orientation": "horizontal",
-          "windows": [
-            {
-              "bundleId": "com.tinyspeck.slackmacgap",
-              "size": "1/2"
-            }
-          ]
+          "bundleId": "com.tinyspeck.slackmacgap",
+          "size": "1/2"
         },
         {
-          "orientation": "horizontal",
-          "windows": [
-            {
-              "bundleId": "com.apple.MobileSMS",
-              "size": "1/2"
-            },
-            {
-              "bundleId": "com.hnc.Discord",
-              "size": "1/2"
-            }
-          ]
+          "bundleId": "com.hnc.Discord",
+          "size": "1/2"
         }
       ]
     },
-    "terminal": {
+    "code": {
       "workspace": "4",
-      "windows": [
-        {
-          "bundleId": "net.kovidgoyal.kitty"
-        }
-      ]
-    },
-    "devtools": {
-      "workspace": "5",
       "layout": "tiles",
       "windows": [
         {
           "bundleId": "dev.zed.Zed"
+        }
+      ]
+    },
+    "tools": {
+      "workspace": "5",
+      "layout": "h_tiles",
+      "windows": [
+        {
+          "bundleId": "md.obsidian",
+          "size": "1/2"
+        },
+        {
+          "bundleId": "net.kovidgoyal.kitty",
+          "size": "1/2"
         }
       ]
     }
