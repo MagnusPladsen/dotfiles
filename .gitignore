@@ -17,7 +17,9 @@
 !.config/ghostty/
 !.config/aerospace/
 !.config/borders/
+!.config/kitty/
 !.config/lazygit/
+!.config/rift/
 !.config/zed/
 !install_sketchybar.sh
 !install_aerospace.sh
