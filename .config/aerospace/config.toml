@@ -83,6 +83,11 @@ if.app-name-regex-substring = 'Slack'
 if.window-title-regex-substring = 'Huddle'
 run = 'layout floating'
 
+# Catch-all: move any window detected on unknown workspaces to workspace 1
+[[on-window-detected]]
+if.workspace = 'S'
+run = 'move-node-to-workspace 1'
+
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
