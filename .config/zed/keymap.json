@@ -7,5 +7,33 @@
         "\u001b\r"
       ]
     }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "ctrl-s": "workspace::Save",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "space f f": "file_finder::Toggle",
+      "space f w": "pane::DeploySearch",
+      "space b b": "tab_switcher::Toggle",
+      "] b": "pane::ActivateNextItem",
+      "[ b": "pane::ActivatePreviousItem",
+      "space b d": "pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "ctrl-s": ["vim::SwitchMode", "Normal", "workspace::Save"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "ctrl-s": ["vim::SwitchMode", "Normal", "workspace::Save"]
+    }
   }
 ]
