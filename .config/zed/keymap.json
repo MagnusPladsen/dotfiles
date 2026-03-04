@@ -27,13 +27,13 @@
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      "ctrl-s": ["vim::SwitchMode", "Normal", "workspace::Save"]
+      "ctrl-s": "workspace::Save"
     }
   },
   {
     "context": "Editor && vim_mode == visual",
     "bindings": {
-      "ctrl-s": ["vim::SwitchMode", "Normal", "workspace::Save"]
+      "ctrl-s": "workspace::Save"
     }
   }
 ]

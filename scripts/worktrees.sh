@@ -39,7 +39,7 @@ wt() {
         if git -C "$project_dir" show-ref --verify --quiet "refs/heads/$feature_name"; then
             git -C "$project_dir" worktree add "$worktree_path" "$feature_name" || { echo "❌ Failed to create worktree."; return 1; }
         else
-            git -C "$project_dir" worktree add -b "$feature_name" "$worktree_path" || { echo "❌ Failed to create worktree."; return 1; }
+            git -C "$project_dir" worktree add -b "$feature_name" "$worktree_path" MAIN || { echo "❌ Failed to create worktree."; return 1; }
         fi
     fi
 
@@ -70,13 +70,21 @@ wt() {
         done
     fi
 
-    # Open in editor
-    if command -v zed &> /dev/null; then
-        zed "$worktree_path" &
-    elif command -v code &> /dev/null; then
-        code "$worktree_path" &
+    # Open in a new cmux workspace named after the branch
+    if command -v cmux &> /dev/null && [ -S /tmp/cmux.sock ]; then
+        local ws_output ws_id
+        ws_output=$(cmux --socket /tmp/cmux.sock new-workspace 2>&1)
+        ws_id=$(echo "$ws_output" | awk '{print $2}')
+        if [ -n "$ws_id" ]; then
+            cmux --socket /tmp/cmux.sock rename-workspace --workspace "$ws_id" "$feature_name"
+            cmux --socket /tmp/cmux.sock select-workspace --workspace "$ws_id"
+            sleep 0.3
+            cmux --socket /tmp/cmux.sock send --workspace "$ws_id" "cd '$worktree_path'"$'\n'
+        else
+            echo "⚠️  cmux new-workspace failed: $ws_output"
+        fi
     else
-        echo "⚠️  Neither Zed nor VS Code found. Open manually: $worktree_path"
+        echo "⚠️  cmux not found or socket missing. Open manually: $worktree_path"
     fi
 
     echo "✅ Worktree '$feature_name' created at $worktree_path and checked out."
