@@ -72,19 +72,27 @@ wt() {
 
     # Open in a new cmux workspace named after the branch
     if command -v cmux &> /dev/null && [ -S /tmp/cmux.sock ]; then
-        local ws_output ws_id
-        ws_output=$(cmux --socket /tmp/cmux.sock new-workspace 2>&1)
-        ws_id=$(echo "$ws_output" | awk '{print $2}')
+        local ws_id
+        ws_id=$(cmux new-workspace 2>&1 | awk '{print $2}')
         if [ -n "$ws_id" ]; then
-            cmux --socket /tmp/cmux.sock rename-workspace --workspace "$ws_id" "$feature_name"
-            cmux --socket /tmp/cmux.sock select-workspace --workspace "$ws_id"
+            cmux rename-workspace --workspace "$ws_id" "$feature_name"
+            cmux select-workspace --workspace "$ws_id"
             sleep 0.3
-            cmux --socket /tmp/cmux.sock send --workspace "$ws_id" "cd '$worktree_path'"$'\n'
+            cmux send --workspace "$ws_id" "cd '$worktree_path' && clear"$'\n'
         else
-            echo "⚠️  cmux new-workspace failed: $ws_output"
+            # Fallback: inside cmux, stdout capture doesn't work
+            cmux new-workspace
+            sleep 0.5
+            cmux rename-workspace "$feature_name"
+            cmux send "cd '$worktree_path' && clear"$'\n'
         fi
+    elif command -v cmux &> /dev/null; then
+        open -a cmux
+        sleep 1
+        cmux rename-workspace "$feature_name" 2>/dev/null
+        cmux send "cd '$worktree_path' && clear"$'\n' 2>/dev/null
     else
-        echo "⚠️  cmux not found or socket missing. Open manually: $worktree_path"
+        echo "⚠️  cmux not found. Open manually: $worktree_path"
     fi
 
     echo "✅ Worktree '$feature_name' created at $worktree_path and checked out."
