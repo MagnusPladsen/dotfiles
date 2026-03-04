@@ -83,6 +83,11 @@ if.app-name-regex-substring = 'Slack'
 if.window-title-regex-substring = 'Huddle'
 run = 'layout floating'
 
+# Popup terminal
+[[on-window-detected]]
+if.window-title-regex-substring = 'popup'
+run = 'layout floating'
+
 # Catch-all: move any window detected on unknown workspaces to workspace 1
 [[on-window-detected]]
 if.workspace = 'S'
@@ -148,6 +153,9 @@ outer.right =      10
 # end tell'
 # '''
 
+
+# Popup floating terminal
+alt-t = 'exec-and-forget ~/scripts/popup-terminal.sh'
 
 # Key binding to run window layout cinfig from script
 alt-s = 'exec-and-forget ~/.config/aerospace/run-aerospace-layout-manager.sh'
