@@ -14,6 +14,8 @@ fi
 # Otherwise, launch a new popup
 kitty \
   --title "popup" \
+  --session none \
+  --directory "$HOME" \
   -o remember_window_size=no \
   -o initial_window_width=800 \
   -o initial_window_height=500 \

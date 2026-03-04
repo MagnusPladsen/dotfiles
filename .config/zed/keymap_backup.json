@@ -1,66 +1,39 @@
-// Zed keymap
-//
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-// To see the default key bindings run `zed: open default keymap`
-// from the command palette.
 [
   {
-    "context": "Workspace",
+    "context": "Terminal",
     "bindings": {
-      // "shift shift": "file_finder::Toggle"
+      "shift-enter": [
+        "terminal::SendText",
+        "\u001b\r"
+      ]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
       "ctrl-s": "workspace::Save",
-    },
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "space f f": "file_finder::Toggle",
+      "space f w": "search::ToggleProjectSearch",
+      "space b b": "tab_switcher::Toggle",
+      "] b": "pane::ActivateNextItem",
+      "[ b": "pane::ActivatePrevItem",
+      "space b d": "pane::CloseActiveItem"
+    }
   },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      // "j k": "vim::NormalBefore",
-    },
+      "ctrl-s": ["vim::SwitchMode", "Normal", "workspace::Save"]
+    }
   },
   {
-    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "context": "Editor && vim_mode == visual",
     "bindings": {
-      "space o": "tab_switcher::Toggle",
-      "space f f": "pane::DeploySearch",
-      "space f g": "file_finder::Toggle",
-      "space d": "diagnostics::Deploy",
-      "space a": "editor::ToggleCodeActions",
-      "space b d": "pane::CloseActiveItem",
-      "space l g": "terminal_panel::ToggleFocus",
-      "] b": "pane::ActivateNextItem",
-      "[ b": "pane::ActivatePrevItem",
-      "g D": "editor::GoToDeclaration",
-      "space shift-o": "editor::OpenExcerpts",
-    },
-  },
-  {
-    "context": "TabSwitcher",
-    "bindings": {
-      "ctrl-w": "tab_switcher::CloseSelectedItem",
-      "x": "tab_switcher::CloseSelectedItem",
-    },
-  },
-  {
-    "context": "Dock || Terminal || Editor",
-    "bindings": {
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown",
-    },
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "ctrl-w ctrl-k": "terminal_panel::ToggleFocus",
-    },
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "ctrl-w ctrl-k": "editor::ToggleFocus",
-    },
-  },
+      "ctrl-s": ["vim::SwitchMode", "Normal", "workspace::Save"]
+    }
+  }
 ]

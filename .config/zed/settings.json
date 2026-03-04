@@ -65,7 +65,7 @@
     "diagnostics": false,
   },
   "buffer_font_size": 15,
-  "theme": "Transparent Dark Glass",
+  "theme": "Transparent Prism - Mocha",
   "lsp": {
     "omnisharp": {
       "binary": {

@@ -50,7 +50,6 @@ alias tiles='open -a "AeroSpace" && ~/.config/aerospace/run-aerospace-layout-man
 alias pattymode='pkill AeroSpace sketchybar && open -a "Google Chrome"'
 alias git-merge='git mergetool --tool=nvimdiff --no-prompt'
 alias bupgrade='brew upgrade'
-alias claude='claude --teammate-mode auto'
 alias claude-notes='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Obsidian\ Vault && claude --dangerously-skip-permissions'
 alias claude-op='claude --dangerously-skip-permissions'
 
@@ -90,3 +89,10 @@ source ~/scripts/worktrees.sh
 
 # Added by Antigravity
 export PATH="/Users/magnuspladsen/.antigravity/antigravity/bin:$PATH"
+
+# bun completions
+[ -s "/Users/magnuspladsen/.bun/_bun" ] && source "/Users/magnuspladsen/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
