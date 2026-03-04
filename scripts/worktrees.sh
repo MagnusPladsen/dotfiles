@@ -58,6 +58,12 @@ wt() {
         fi
     done
 
+    # Copy .claude settings into worktree
+    if [ -d "$project_dir/.claude" ]; then
+        cp -R "$project_dir/.claude" "$worktree_path/.claude"
+        echo "📁 Copied .claude into worktree."
+    fi
+
     # Copy gitignored config files preserving directory structure
     local config_files
     config_files=$(git -C "$project_dir" ls-files --others --ignored --exclude-standard 2>/dev/null | \
