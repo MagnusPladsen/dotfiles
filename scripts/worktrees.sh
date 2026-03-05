@@ -58,10 +58,19 @@ wt() {
         fi
     done
 
-    # Copy .claude settings into worktree
+    # Copy gitignored .claude files (e.g. settings.local.json with permissions)
     if [ -d "$project_dir/.claude" ]; then
-        cp -R "$project_dir/.claude" "$worktree_path/.claude"
-        echo "📁 Copied .claude into worktree."
+        local claude_ignored
+        claude_ignored=$(cd "$project_dir" && find .claude -type f 2>/dev/null | while read -r f; do
+            git check-ignore -q "$f" 2>/dev/null && echo "$f"
+        done) || true
+        if [ -n "$claude_ignored" ]; then
+            echo "$claude_ignored" | while IFS= read -r file; do
+                mkdir -p "$worktree_path/$(dirname "$file")"
+                cp "$project_dir/$file" "$worktree_path/$file"
+                echo "📋 Copied $file into worktree."
+            done
+        fi
     fi
 
     # Copy gitignored config files preserving directory structure
