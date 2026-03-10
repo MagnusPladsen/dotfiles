@@ -11,6 +11,12 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
 export ANDROID_ADB_SERVER_PORT=5038
 
+# ── Fastfetch (system info on terminal open) ──────────────────────
+# Must run BEFORE p10k instant prompt to avoid console output warning
+if [[ $- == *i* ]] && [[ -z "$VSCODE_SHELL_INTEGRATION" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && command -v fastfetch &>/dev/null; then
+  fastfetch
+fi
+
 # ── Powerlevel10k instant prompt (must stay near top) ────────────
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
