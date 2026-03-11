@@ -43,21 +43,7 @@
       "layout": "tiles",
       "windows": [
         {
-          "bundleId": "dev.zed.Zed"
-        }
-      ]
-    },
-    "tools": {
-      "workspace": "5",
-      "layout": "h_tiles",
-      "windows": [
-        {
-          "bundleId": "md.obsidian",
-          "size": "1/2"
-        },
-        {
-          "bundleId": "net.kovidgoyal.kitty",
-          "size": "1/2"
+          "bundleId": "com.cmuxterm.app"
         }
       ]
     }
