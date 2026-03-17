@@ -1,10 +1,17 @@
 #!/bin/bash
 set -e
 
-project_dir=$(git rev-parse --show-toplevel) || { echo "❌ Not inside a Git repository."; exit 1; }
+current_dir=$(git rev-parse --show-toplevel) || { echo "❌ Not inside a Git repository."; exit 1; }
 
-# Copy gitignored env/config files into current directory
-source ~/scripts/copy-project-env.sh "$project_dir" "."
+# Find the main worktree (not the current worktree) to copy env files from
+main_worktree=$(git worktree list --porcelain | head -1 | sed 's/^worktree //')
+
+if [ "$main_worktree" = "$current_dir" ]; then
+    echo "⚠️  Already in the main worktree, skipping env copy."
+else
+    echo "📂 Main worktree: $main_worktree"
+    source ~/scripts/copy-project-env.sh "$main_worktree" "$current_dir"
+fi
 
 # Detect runtime and install/run
 if [ -f "package.json" ]; then
