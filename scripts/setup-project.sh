@@ -3,45 +3,8 @@ set -e
 
 project_dir=$(git rev-parse --show-toplevel) || { echo "❌ Not inside a Git repository."; exit 1; }
 
-# Copy gitignored dotfiles (e.g. .env, .env.local)
-for item in "$project_dir"/.*; do
-    name=$(basename "$item")
-    [[ "$name" == "." || "$name" == ".." || "$name" == ".git" ]] && continue
-    if git -C "$project_dir" check-ignore -q "$item" 2>/dev/null; then
-        if [ -d "$item" ]; then
-            cp -R "$item" "./$name"
-            echo "📁 Copied $name"
-        elif [ -f "$item" ]; then
-            cp "$item" "./$name"
-            echo "📋 Copied $name"
-        fi
-    fi
-done
-
-# Copy gitignored .claude files (e.g. settings.local.json)
-if [ -d "$project_dir/.claude" ]; then
-    claude_ignored=$(cd "$project_dir" && find .claude -type f 2>/dev/null | while read -r f; do
-        git check-ignore -q "$f" 2>/dev/null && echo "$f"
-    done) || true
-    if [ -n "$claude_ignored" ]; then
-        echo "$claude_ignored" | while IFS= read -r file; do
-            mkdir -p "./$(dirname "$file")"
-            cp "$project_dir/$file" "./$file"
-            echo "📋 Copied $file"
-        done
-    fi
-fi
-
-# Copy gitignored config files (appsettings, .env variants, docker overrides, etc.)
-config_files=$(git -C "$project_dir" ls-files --others --ignored --exclude-standard 2>/dev/null | \
-    grep -iE '(appsettings\..+\.json$|\.env(\.|$)|local\.settings\.json$|secrets\.json$|\.user$|docker-compose\.override\.ya?ml$|application-.+\.(properties|ya?ml)$|local_settings\.py$|\.dev\.vars$|wrangler\.toml$)') || true
-if [ -n "$config_files" ]; then
-    echo "$config_files" | while IFS= read -r file; do
-        mkdir -p "./$(dirname "$file")"
-        cp "$project_dir/$file" "./$file"
-        echo "📋 Copied $file"
-    done
-fi
+# Copy gitignored env/config files into current directory
+source ~/scripts/copy-project-env.sh "$project_dir" "."
 
 # Detect runtime and install/run
 if [ -f "package.json" ]; then
