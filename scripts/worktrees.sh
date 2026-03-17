@@ -43,47 +43,8 @@ wt() {
         fi
     fi
 
-    # Copy gitignored dotfiles into the worktree
-    for item in "$project_dir"/.*; do
-        local name=$(basename "$item")
-        [[ "$name" == "." || "$name" == ".." || "$name" == ".git" ]] && continue
-        if git -C "$project_dir" check-ignore -q "$item" 2>/dev/null; then
-            if [ -d "$item" ]; then
-                cp -R "$item" "$worktree_path/$name"
-                echo "📁 Copied $name into worktree."
-            elif [ -f "$item" ]; then
-                cp "$item" "$worktree_path/$name"
-                echo "📋 Copied $name into worktree."
-            fi
-        fi
-    done
-
-    # Copy gitignored .claude files (e.g. settings.local.json with permissions)
-    if [ -d "$project_dir/.claude" ]; then
-        local claude_ignored
-        claude_ignored=$(cd "$project_dir" && find .claude -type f 2>/dev/null | while read -r f; do
-            git check-ignore -q "$f" 2>/dev/null && echo "$f"
-        done) || true
-        if [ -n "$claude_ignored" ]; then
-            echo "$claude_ignored" | while IFS= read -r file; do
-                mkdir -p "$worktree_path/$(dirname "$file")"
-                cp "$project_dir/$file" "$worktree_path/$file"
-                echo "📋 Copied $file into worktree."
-            done
-        fi
-    fi
-
-    # Copy gitignored config files preserving directory structure
-    local config_files
-    config_files=$(git -C "$project_dir" ls-files --others --ignored --exclude-standard 2>/dev/null | \
-        grep -iE '(appsettings\..+\.json$|\.env(\.|$)|local\.settings\.json$|secrets\.json$|\.user$|docker-compose\.override\.ya?ml$|application-.+\.(properties|ya?ml)$|local_settings\.py$|\.dev\.vars$|wrangler\.toml$)') || true
-    if [ -n "$config_files" ]; then
-        echo "$config_files" | while IFS= read -r file; do
-            mkdir -p "$worktree_path/$(dirname "$file")"
-            cp "$project_dir/$file" "$worktree_path/$file"
-            echo "📋 Copied $file into worktree."
-        done
-    fi
+    # Copy gitignored env/config files into the worktree
+    source ~/scripts/copy-project-env.sh "$project_dir" "$worktree_path"
 
     # Open in a new cmux workspace named after the branch
     if command -v cmux &> /dev/null && [ -S /tmp/cmux.sock ]; then
