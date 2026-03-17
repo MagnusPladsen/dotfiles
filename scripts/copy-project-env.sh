@@ -6,11 +6,14 @@
 
 source_dir="$1"
 target_dir="$2"
+copied_count=0
 
 if [ -z "$source_dir" ] || [ -z "$target_dir" ]; then
     echo "❌ Usage: copy-project-env.sh <source_dir> <target_dir>"
     return 1 2>/dev/null || exit 1
 fi
+
+echo "🔍 Scanning for gitignored env/config files in $source_dir..."
 
 # Copy gitignored dotfiles (e.g. .env, .env.local)
 for item in "$source_dir"/.*; do
@@ -19,10 +22,12 @@ for item in "$source_dir"/.*; do
     if git -C "$source_dir" check-ignore -q "$item" 2>/dev/null; then
         if [ -d "$item" ]; then
             cp -R "$item" "$target_dir/$name"
-            echo "📁 Copied $name"
+            echo "📁 Copied $name (directory)"
+            copied_count=$((copied_count + 1))
         elif [ -f "$item" ]; then
             cp "$item" "$target_dir/$name"
             echo "📋 Copied $name"
+            copied_count=$((copied_count + 1))
         fi
     fi
 done
@@ -37,6 +42,7 @@ if [ -d "$source_dir/.claude" ]; then
             mkdir -p "$target_dir/$(dirname "$file")"
             cp "$source_dir/$file" "$target_dir/$file"
             echo "📋 Copied $file"
+            copied_count=$((copied_count + 1))
         done
     fi
 fi
@@ -49,5 +55,12 @@ if [ -n "$config_files" ]; then
         mkdir -p "$target_dir/$(dirname "$file")"
         cp "$source_dir/$file" "$target_dir/$file"
         echo "📋 Copied $file"
+        copied_count=$((copied_count + 1))
     done
+fi
+
+if [ "$copied_count" -eq 0 ]; then
+    echo "⚠️  No gitignored env/config files found to copy."
+else
+    echo "✅ Copied $copied_count file(s) from $source_dir to $target_dir"
 fi
