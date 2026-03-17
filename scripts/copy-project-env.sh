@@ -13,6 +13,14 @@ if [ -z "$source_dir" ] || [ -z "$target_dir" ]; then
     return 1 2>/dev/null || exit 1
 fi
 
+# Resolve to absolute paths and bail if same directory
+source_dir=$(cd "$source_dir" && pwd -P)
+target_dir=$(cd "$target_dir" && pwd -P)
+if [ "$source_dir" = "$target_dir" ]; then
+    echo "⚠️  Source and target are the same directory, skipping."
+    return 0 2>/dev/null || exit 0
+fi
+
 echo "🔍 Scanning for gitignored env/config files in $source_dir..."
 
 # Copy gitignored dotfiles (e.g. .env, .env.local)
