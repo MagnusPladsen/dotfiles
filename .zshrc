@@ -39,7 +39,6 @@ if [ -f ~/.env ]; then
 fi
 
 # ── Shell tools ──────────────────────────────────────────────────
-eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
 eval $(thefuck --alias)
 
@@ -93,6 +92,16 @@ azpr() {
 # Git worktree helpers (wt / wt-close)
 source ~/scripts/worktrees.sh
 
+# Yazi wrapper — cd to last visited directory on exit
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 # Added by Antigravity
 export PATH="/Users/magnuspladsen/.antigravity/antigravity/bin:$PATH"
 
@@ -102,3 +111,6 @@ export PATH="/Users/magnuspladsen/.antigravity/antigravity/bin:$PATH"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# ── Zoxide (must be at the end of .zshrc) ────────────────────────
+eval "$(zoxide init --cmd cd zsh)"
