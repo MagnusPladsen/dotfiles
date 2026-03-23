@@ -116,3 +116,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # ── Zoxide (must be at the end of .zshrc) ────────────────────────
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(tv init zsh)"
