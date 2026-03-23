@@ -13,8 +13,7 @@ env = { BAT_THEME = "ansi" }
 [keybindings]
 shortcut = "f1"
 enter = "actions:bat"
-ctrl-enter = "actions:nvim"
-f12 = "actions:edit"
+ctrl-e = "actions:nvim"
 ctrl-up = "actions:goto_parent_dir"
 
 [actions.bat]
