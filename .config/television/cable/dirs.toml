@@ -11,6 +11,7 @@ command = "ls -la --color=always '{}'"
 
 [keybindings]
 shortcut = "f2"
+enter = "actions:cd"
 
 [actions.cd]
 description = "Open a shell in the selected directory"
