@@ -16,7 +16,10 @@
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-l": "workspace::ActivatePaneRight",
-      "space f f": "file_finder::Toggle",
+      "space f f": [
+        "task::Spawn",
+        { "task_name": "Television File Finder", "reveal_target": "center" }
+      ],
       "space f w": "pane::DeploySearch",
       "space b b": "tab_switcher::Toggle",
       "] b": "pane::ActivateNextItem",
