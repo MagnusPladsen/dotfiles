@@ -1,0 +1,14 @@
+[metadata]
+name = "alias"
+description = "A channel to select from shell aliases"
+
+[source]
+# avoid interactive shell to prevent escape sequence pollution from p10k/fastfetch
+command = "zsh --no-rcs -c 'POWERLEVEL9K_INSTANT_PROMPT=off TV_RUNNING=1 emulate zsh -c \"source ~/.zshrc\" &>/dev/null; alias' 2>/dev/null"
+output = "{split:=:0}"
+
+[preview]
+command = "zsh --no-rcs -c 'POWERLEVEL9K_INSTANT_PROMPT=off TV_RUNNING=1 emulate zsh -c \"source ~/.zshrc\" &>/dev/null; alias' 2>/dev/null | grep -E '^(alias )?{split:=:0}='"
+
+[ui.preview_panel]
+size = 30

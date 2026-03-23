@@ -1,0 +1,34 @@
+[metadata]
+name = "files"
+description = "A channel to select files and directories"
+requirements = ["fd", "bat"]
+
+[source]
+command = ["fd -t f", "fd -t f -H"]
+
+[preview]
+command = "bat -n --color=always '{}'"
+env = { BAT_THEME = "ansi" }
+
+[keybindings]
+shortcut = "f1"
+enter = "actions:bat"
+f12 = "actions:edit"
+ctrl-up = "actions:goto_parent_dir"
+
+[actions.bat]
+description = "View the selected file with bat"
+command = "bat '{}'"
+mode = "execute"
+
+[actions.edit]
+description = "Opens the selected entries with the default editor (falls back to vim)"
+command = "${EDITOR:-vim} '{}'"
+shell = "bash"
+# use `mode = "fork"` if you want to return to tv afterwards
+mode = "execute"
+
+[actions.goto_parent_dir]
+description = "Re-opens tv in the parent directory"
+command = "tv files .."
+mode = "execute"
