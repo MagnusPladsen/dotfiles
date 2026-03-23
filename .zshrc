@@ -13,7 +13,7 @@ export ANDROID_ADB_SERVER_PORT=5038
 
 # ── Fastfetch (system info on terminal open) ──────────────────────
 # Must run BEFORE p10k instant prompt to avoid console output warning
-if [[ $- == *i* ]] && [[ -z "$VSCODE_SHELL_INTEGRATION" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && command -v fastfetch &>/dev/null; then
+if [[ $- == *i* ]] && [[ -z "$VSCODE_SHELL_INTEGRATION" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && [[ -z "$TV_RUNNING" ]] && command -v fastfetch &>/dev/null; then
   fastfetch
 fi
 
@@ -58,6 +58,7 @@ alias bupgrade='brew upgrade'
 alias claude-notes='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Obsidian\ Vault && claude --dangerously-skip-permissions'
 alias claude-op='claude --dangerously-skip-permissions'
 alias game-mode='~/scripts/game-mode.sh'
+alias repos='tv git-repos'
 
 # ── FZF + fd config ──────────────────────────────────────────────
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
