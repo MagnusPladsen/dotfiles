@@ -83,6 +83,11 @@ if.app-name-regex-substring = 'Slack'
 if.window-title-regex-substring = 'Huddle'
 run = 'layout floating'
 
+# Superset — always tile on workspace 4
+[[on-window-detected]]
+if.app-name-regex-substring = 'Superset'
+run = ['layout tiling', 'move-node-to-workspace 4']
+
 # Popup terminal
 [[on-window-detected]]
 if.window-title-regex-substring = 'popup'

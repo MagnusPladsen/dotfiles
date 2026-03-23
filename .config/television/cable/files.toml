@@ -20,11 +20,13 @@ ctrl-up = "actions:goto_parent_dir"
 [actions.bat]
 description = "View the selected file with bat"
 command = "bat '{}'"
+shell = "bash"
 mode = "execute"
 
 [actions.nvim]
 description = "Open the selected file in Neovim"
 command = "nvim '{}'"
+shell = "bash"
 mode = "execute"
 
 [actions.edit]

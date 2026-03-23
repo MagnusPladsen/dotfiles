@@ -43,7 +43,7 @@
       "layout": "tiles",
       "windows": [
         {
-          "bundleId": "com.cmuxterm.app"
+          "bundleId": "com.superset.desktop"
         }
       ]
     }
