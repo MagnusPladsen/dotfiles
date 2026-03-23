@@ -57,6 +57,7 @@ alias git-merge='git mergetool --tool=nvimdiff --no-prompt'
 alias bupgrade='brew upgrade'
 alias claude-notes='cd ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Obsidian\ Vault && claude --dangerously-skip-permissions'
 alias claude-op='claude --dangerously-skip-permissions'
+alias game-mode='~/scripts/game-mode.sh'
 
 # ── FZF + fd config ──────────────────────────────────────────────
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
