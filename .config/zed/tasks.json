@@ -1,7 +1,7 @@
 [
   {
     "label": "Television File Finder",
-    "command": "zed \"$(tv files)\"",
+    "command": "TV_RUNNING=1 zed \"$(tv files --keybindings='enter=\"confirm_selection\"')\"",
     "hide": "always",
     "allow_concurrent_runs": true,
     "use_new_terminal": true
