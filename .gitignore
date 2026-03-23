@@ -22,6 +22,7 @@
 !.config/rift/
 !.config/zed/
 !.config/fastfetch/
+!.config/television/
 !install_sketchybar.sh
 !install_aerospace.sh
 !fzf-git.sh/
