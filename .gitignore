@@ -30,4 +30,7 @@
 
 !scripts/
 
+!DOTFILES.md
+!CLAUDE.md
+
 *-lock*
