@@ -162,6 +162,9 @@ outer.right =      10
 # Popup floating terminal
 alt-t = 'exec-and-forget ~/scripts/popup-terminal.sh'
 
+# Popup floating terminal running claude-op
+alt-c = 'exec-and-forget ~/scripts/popup-claude-op.sh'
+
 # Key binding to run window layout cinfig from script
 alt-s = 'exec-and-forget ~/.config/aerospace/run-aerospace-layout-manager.sh'
 
