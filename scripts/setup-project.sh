@@ -58,12 +58,10 @@ elif find . -maxdepth 3 -name "*.csproj" -o -name "*.sln" 2>/dev/null | head -1 
         command -v dotnet >/dev/null 2>&1 || { echo "❌ dotnet not found"; exit 1; }
         if grep -ql "Microsoft.EntityFrameworkCore" "$project" 2>/dev/null; then
             echo "🔧 Detected .NET with EF Core — project: $project"
-            dotnet ef database update --project "$project"
-            dotnet run --project "$project"
-        else
-            echo "🔧 Detected .NET — project: $project"
-            dotnet run --project "$project"
+            echo "⚠️  Run 'dotnet ef database update --project \"$project\"' manually if needed"
         fi
+        echo "🔧 Running .NET project: $project"
+        dotnet run --project "$project"
     fi
 else
     echo "⚠️  No recognized project type found"
