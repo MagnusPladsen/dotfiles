@@ -30,14 +30,33 @@ if [ -f "package.json" ]; then
     fi
     # Fallback: create .env from example if nothing was copied
     [ ! -f .env ] && [ -f .env.example ] && cp .env.example .env && echo "📋 Created .env from .env.example"
-elif [ -f "*.csproj" ] || [ -f "*.sln" ] || ls *.csproj *.sln 2>/dev/null | head -1 > /dev/null 2>&1; then
-    if find . -name "*.csproj" -exec grep -l "Microsoft.EntityFrameworkCore" {} \; 2>/dev/null | head -1 > /dev/null 2>&1; then
-        echo "🔧 Detected .NET with EF Core"
-        dotnet ef database update
-        dotnet run
+elif find . -maxdepth 3 -name "*.csproj" -o -name "*.sln" 2>/dev/null | head -1 | grep -q .; then
+    # Find the runnable project (Web/API project with OutputType Exe or Sdk Web)
+    project=""
+    for csproj in $(find . -maxdepth 4 -name "*.csproj" 2>/dev/null); do
+        if grep -qE 'Microsoft\.NET\.Sdk\.Web|<OutputType>Exe</OutputType>' "$csproj" 2>/dev/null; then
+            project="$csproj"
+            break
+        fi
+    done
+    # Fallback: if only one csproj exists, use it
+    if [ -z "$project" ]; then
+        csproj_count=$(find . -maxdepth 4 -name "*.csproj" 2>/dev/null | wc -l | tr -d ' ')
+        if [ "$csproj_count" -eq 1 ]; then
+            project=$(find . -maxdepth 4 -name "*.csproj" 2>/dev/null | head -1)
+        fi
+    fi
+
+    if [ -z "$project" ]; then
+        echo "⚠️  Multiple .csproj files found but couldn't determine which to run."
+        find . -maxdepth 4 -name "*.csproj" 2>/dev/null | sed 's/^/  /'
+    elif grep -ql "Microsoft.EntityFrameworkCore" "$project" 2>/dev/null; then
+        echo "🔧 Detected .NET with EF Core — project: $project"
+        dotnet ef database update --project "$project"
+        dotnet run --project "$project"
     else
-        echo "🔧 Detected .NET"
-        dotnet run
+        echo "🔧 Detected .NET — project: $project"
+        dotnet run --project "$project"
     fi
 else
     echo "⚠️  No recognized project type found"
