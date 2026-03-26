@@ -7,7 +7,7 @@ brew install sketchybar
 brew install --cask font-hack-nerd-font
 
 if [ -d "$HOME/.config/sketchybar" ]; then
-  cp -r $HOME/.config/sketchybar $HOME/.config/sketchybar_backup
+  cp -r "$HOME/.config/sketchybar" "$HOME/.config/sketchybar_backup"
 fi
-cp -r sketchybar $HOME/.config/sketchybar
+cp -r sketchybar "$HOME/.config/sketchybar"
 brew services restart sketchybar

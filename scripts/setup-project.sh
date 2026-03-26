@@ -16,15 +16,19 @@ fi
 # Detect runtime and install/run
 if [ -f "package.json" ]; then
     if [ -f "bun.lockb" ] || [ -f "bun.lock" ]; then
+        command -v bun >/dev/null 2>&1 || { echo "❌ bun not found"; exit 1; }
         echo "📦 Detected bun"
         bun install
     elif [ -f "pnpm-lock.yaml" ]; then
+        command -v pnpm >/dev/null 2>&1 || { echo "❌ pnpm not found"; exit 1; }
         echo "📦 Detected pnpm"
         pnpm install
     elif [ -f "yarn.lock" ]; then
+        command -v yarn >/dev/null 2>&1 || { echo "❌ yarn not found"; exit 1; }
         echo "📦 Detected yarn"
         yarn install
     else
+        command -v npm >/dev/null 2>&1 || { echo "❌ npm not found"; exit 1; }
         echo "📦 Detected npm"
         npm ci
     fi
@@ -50,13 +54,16 @@ elif find . -maxdepth 3 -name "*.csproj" -o -name "*.sln" 2>/dev/null | head -1 
     if [ -z "$project" ]; then
         echo "⚠️  Multiple .csproj files found but couldn't determine which to run."
         find . -maxdepth 4 -name "*.csproj" 2>/dev/null | sed 's/^/  /'
-    elif grep -ql "Microsoft.EntityFrameworkCore" "$project" 2>/dev/null; then
-        echo "🔧 Detected .NET with EF Core — project: $project"
-        dotnet ef database update --project "$project"
-        dotnet run --project "$project"
     else
-        echo "🔧 Detected .NET — project: $project"
-        dotnet run --project "$project"
+        command -v dotnet >/dev/null 2>&1 || { echo "❌ dotnet not found"; exit 1; }
+        if grep -ql "Microsoft.EntityFrameworkCore" "$project" 2>/dev/null; then
+            echo "🔧 Detected .NET with EF Core — project: $project"
+            dotnet ef database update --project "$project"
+            dotnet run --project "$project"
+        else
+            echo "🔧 Detected .NET — project: $project"
+            dotnet run --project "$project"
+        fi
     fi
 else
     echo "⚠️  No recognized project type found"

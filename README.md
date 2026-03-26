@@ -26,7 +26,6 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | `layouts.json` | Workspace layout presets for `aerospace-layout-manager` |
 | `pip-move.sh` | Moves PiP windows to the focused workspace on workspace change |
 | `run-aerospace-layout-manager.sh` | Applies all layout presets from `layouts.json` |
-| `startup-workspace-setup.sh` | (Deprecated) Old boot setup, replaced by `run-aerospace-layout-manager.sh` |
 
 #### AeroSpace Keybindings
 
@@ -160,7 +159,6 @@ Key custom channels: `files`, `procs`, `dotfiles`, `git-worktrees`, `git-repos`,
 | `run-aerospace-layout-manager.sh` | Reads layout presets from `layouts.json` and applies them all via `aerospace-layout-manager`. Restores predefined window arrangements. Bound to `alt-s`. |
 | `setup-project.sh` | Sets up a git worktree for development: copies env files from the main worktree, detects the package manager (bun/pnpm/yarn/npm), and installs dependencies. |
 | `start-claude-code.sh` | Cron-triggered script that runs `claude "hello world"` and logs the output. Used by the `com.user.claude-code-morning.plist` LaunchAgent. |
-| `startup-workspace-setup.sh` | (Deprecated) Old boot workspace setup script, replaced by `run-aerospace-layout-manager.sh`. |
 | `tmux-lazygit.sh` | Opens lazygit in the current tmux pane's working directory. Used for tmux popup integration. |
 | `worktrees.sh` | Git worktree helpers: `wt <name>` creates a worktree + branch, `wt-close <name>` removes it. Worktrees are created in a sibling `*-worktrees/` directory. |
 
