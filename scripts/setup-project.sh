@@ -55,13 +55,11 @@ elif find . -maxdepth 3 -name "*.csproj" -o -name "*.sln" 2>/dev/null | head -1 
         echo "⚠️  Multiple .csproj files found but couldn't determine which to run."
         find . -maxdepth 4 -name "*.csproj" 2>/dev/null | sed 's/^/  /'
     else
-        command -v dotnet >/dev/null 2>&1 || { echo "❌ dotnet not found"; exit 1; }
+        echo "🔧 Detected .NET project: $project"
         if grep -ql "Microsoft.EntityFrameworkCore" "$project" 2>/dev/null; then
-            echo "🔧 Detected .NET with EF Core — project: $project"
-            echo "⚠️  Run 'dotnet ef database update --project \"$project\"' manually if needed"
+            echo "⚠️  EF Core detected — run 'dotnet ef database update --project \"$project\"' manually if needed"
         fi
-        echo "🔧 Running .NET project: $project"
-        dotnet run --project "$project"
+        echo "⚠️  Run 'dotnet run --project \"$project\"' to start"
     fi
 else
     echo "⚠️  No recognized project type found"
