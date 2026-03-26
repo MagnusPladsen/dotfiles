@@ -4,7 +4,7 @@
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
 # Use absolute path for config file
-CONFIG_FILE="/Users/magnuspladsen/.config/aerospace/layouts.json"
+CONFIG_FILE="$HOME/.config/aerospace/layouts.json"
 
 # List all layouts using aerospace-layout-manager
 layouts=$(aerospace-layout-manager --configFile "$CONFIG_FILE" --listLayouts)
