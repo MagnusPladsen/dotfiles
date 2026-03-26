@@ -8,6 +8,7 @@
 - **Tracked:** `.vimrc`, `.zshrc`, `.tmux.conf`, `.gitignore`, `scripts/`, `LaunchAgents/`, `fzf-git.sh/`, `.config/{nvim,espanso,sketchybar,ghostty,aerospace,borders,lazygit,zed,television}/`
 - **Not tracked (intentional):** `.gitconfig` (machine-specific), `.p10k.zsh`
 - **TODO:** `.config/kitty/` should be added to dotfiles tracking (currently missing)
+- **README:** `~/README.md` documents all tracked configs, scripts, aliases, and keybindings
 
 ## Key Paths & Tools
 
