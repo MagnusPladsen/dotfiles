@@ -166,6 +166,7 @@ Key custom channels: `files`, `procs`, `dotfiles`, `git-worktrees`, `git-repos`,
 
 | Alias | Expands to | Purpose |
 |-------|-----------|---------|
+| `cd` | `z` (zoxide) | Smart directory jumping with frecency ranking |
 | `dotfiles` | `git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME` | Git operations on the bare dotfiles repo |
 | `ls` | `eza --color=always --icons=always --long --git ...` | Pretty file listing with icons and git status |
 | `ll` | `eza -lah --icons=always --group-directories-first` | Detailed file listing |
