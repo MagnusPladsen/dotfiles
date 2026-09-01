@@ -1,10 +1,15 @@
 #!/bin/bash
 
 # ── AeroSpace Workspace Indicators ─────────────────
-# Dynamic workspace items with app icons
+# Dynamic workspace items with app icons.
+# Numeric filter: aerospace-layout-manager parks windows on the stash workspace
+# ("stashWorkspace" in layouts.json, default "S") while it arranges layouts. If
+# the bar is (re)loaded during that window, the stash gets baked in as a
+# permanent space.S item. Only the persistent numeric workspaces belong here.
+ws_list() { aerospace list-workspaces --monitor "$1" | grep -E '^[0-9]+$'; }
 
 for monitor in $(aerospace list-monitors --format "%{monitor-appkit-nsscreen-screens-id}"); do
-  for sid in $(aerospace list-workspaces --monitor "$monitor"); do
+  for sid in $(ws_list "$monitor"); do
     # Map workspaces to displays
     display_id="1"
     if [ "$sid" -ge 6 ] && [ "$sid" -le 7 ]; then
@@ -39,7 +44,7 @@ done
 
 # Load workspace app icons on startup
 for monitor in $(aerospace list-monitors --format "%{monitor-appkit-nsscreen-screens-id}"); do
-  for sid in $(aerospace list-workspaces --monitor "$monitor"); do
+  for sid in $(ws_list "$monitor"); do
     apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
 
     icon_strip=" "

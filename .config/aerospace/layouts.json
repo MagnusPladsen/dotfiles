@@ -15,12 +15,10 @@
       "layout": "h_tiles",
       "windows": [
         {
-          "bundleId": "com.apple.MobileSMS",
-          "size": "1/2"
+          "bundleId": "com.apple.MobileSMS"
         },
         {
-          "bundleId": "com.spotify.client",
-          "size": "1/2"
+          "bundleId": "com.spotify.client"
         }
       ]
     },
@@ -29,12 +27,13 @@
       "layout": "h_tiles",
       "windows": [
         {
-          "bundleId": "com.tinyspeck.slackmacgap",
-          "size": "1/2"
+          "bundleId": "com.tinyspeck.slackmacgap"
         },
         {
-          "bundleId": "com.hnc.Discord",
-          "size": "1/2"
+          "bundleId": "com.hnc.Discord"
+        },
+        {
+          "bundleId": "ch.protonmail.desktop"
         }
       ]
     },

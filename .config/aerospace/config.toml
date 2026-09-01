@@ -1,8 +1,12 @@
+# See: https://nikitabobko.github.io/AeroSpace/guide#config-version
+config-version = 2
+
+# Required under config-version = 2: the fallback is [] (v1 inferred these
+# from the alt-1..alt-6 bindings). Keeps 1-6 alive for the sketchybar spaces items.
+persistent-workspaces = ["1", "2", "3", "4", "5", "6"]
+
 # Launch Sketchybar
-after-startup-command = [
-  'exec-and-forget sketchybar',
-  'exec-and-forget ',
-]
+after-startup-command = ['exec-and-forget sketchybar']
 
 # Notify Sketchybar about workspace change
 #exec-on-workspace-change = ['/bin/bash', '-c',
@@ -23,9 +27,9 @@ enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
-# The 'accordion-padding' specifies the size of accordion padding
-# You can set 0 to disable the padding feature
-accordion-padding = 300
+# Accordion is off: 0 disables the accordion padding feature, the root layout is
+# 'tiles', and no binding switches a workspace into accordion.
+accordion-padding = 0
 
 # Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
@@ -61,26 +65,26 @@ automatically-unhide-macos-hidden-apps = false
 # Finder 
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'
+check-further-callbacks = true
 run = 'layout floating'
 
 # PiP firefox
 [[on-window-detected]]
 if.window-title-regex-substring = 'Picture-In-Picture'
+check-further-callbacks = true
 run = 'layout floating'
 
 # PiP Edge
 [[on-window-detected]]
 if.window-title-regex-substring = 'PictureInPicture'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.window-title-regex-substring = 'Proton Mail'
+check-further-callbacks = true
 run = 'layout floating'
 
 # Slack Huddle
 [[on-window-detected]]
 if.app-name-regex-substring = 'Slack'
 if.window-title-regex-substring = 'Huddle'
+check-further-callbacks = true
 run = 'layout floating'
 
 # Superset — always tile on workspace 4
@@ -88,9 +92,15 @@ run = 'layout floating'
 if.app-name-regex-substring = 'Superset'
 run = ['layout tiling', 'move-node-to-workspace 4']
 
+# Proton Mail — always tile on workspace 3 (with Slack/Discord)
+[[on-window-detected]]
+if.app-id = 'ch.protonmail.desktop'
+run = ['layout tiling', 'move-node-to-workspace 3']
+
 # Popup terminal
 [[on-window-detected]]
 if.window-title-regex-substring = 'popup'
+check-further-callbacks = true
 run = 'layout floating'
 
 # Catch-all: move any window detected on unknown workspaces to workspace 1
@@ -159,14 +169,15 @@ outer.right =      10
 # '''
 
 
-# Popup floating terminal
-alt-t = 'exec-and-forget ~/scripts/popup-terminal.sh'
+# Popup floating windows: open once, focus on repeat press. See
+# ~/scripts/popup-kitty.sh. Titles are 'popup-term'/'popup-omp', both matched by
+# the 'popup' on-window-detected rule below.
+alt-t = 'exec-and-forget POPUP_DIR="$HOME" $HOME/scripts/popup-kitty.sh term'
 
-# Popup floating terminal running claude-op
-alt-c = 'exec-and-forget ~/scripts/popup-claude-op.sh'
+alt-c = 'exec-and-forget $HOME/scripts/popup-kitty.sh omp zsh -ic omp'
 
 # Key binding to run window layout cinfig from script
-alt-s = 'exec-and-forget ~/.config/aerospace/run-aerospace-layout-manager.sh'
+alt-s = 'exec-and-forget $HOME/.config/aerospace/run-aerospace-layout-manager.sh'
 
 # Reload AeroSpace config
 alt-shift-r = 'reload-config'
