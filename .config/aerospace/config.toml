@@ -182,6 +182,11 @@ alt-s = 'exec-and-forget $HOME/.config/aerospace/run-aerospace-layout-manager.sh
 # Reload AeroSpace config
 alt-shift-r = 'reload-config'
 
+# Close the focused window. Sends the window's own close request, so unsaved
+# work still prompts and close-to-tray apps just hide.
+# See: https://nikitabobko.github.io/AeroSpace/commands#close
+alt-w = 'close'
+
 alt-shift-left = 'join-with left'
 alt-shift-down = 'join-with down'
 alt-shift-up = 'join-with up'
@@ -227,7 +232,6 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
-alt-shift-enter = 'mode apps'
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
@@ -235,9 +239,6 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
-
-[mode.apps.binding]
-alt-w = ['exec-and-forget open -a /Applications/WezTerm.app', 'mode main']
 
 #[workspace-to-monitor-force-assignment]
 #1 = '^Built-in.*$'

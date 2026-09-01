@@ -46,6 +46,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | `alt-shift-arrow` | Join window with container in direction |
 | `alt-slash` | Toggle layout between horizontal and vertical tiles |
 | `alt-shift-minus/equal` | Resize window smaller/larger |
+| `alt-w` | Close focused window |
 
 **Workspaces**
 
@@ -61,10 +62,8 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | Keybinding | Action |
 |------------|--------|
 | `alt-shift-;` | Enter service mode |
-| `alt-shift-enter` | Enter apps mode |
 
 *Service mode:* `esc` reload config, `r` reset layout, `f` toggle float/tile, `backspace` close all windows but current.
-*Apps mode:* `alt-w` open WezTerm.
 
 ### Status Bar — `.config/sketchybar/`
 
