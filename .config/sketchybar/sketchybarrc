@@ -15,6 +15,10 @@ FONT="Hack Nerd Font"
 LABEL_FONT="MesloLGS NF"
 
 # ── Bar Appearance ──────────────────────────────────
+# shadow MUST stay off: in sketchybar 2.24.0 the combination of blur_radius>0
+# and shadow=on smears the blur past the bar bounds (a band below the bar) and
+# causes shadow flicker in other windows. Upstream:
+# https://github.com/FelixKratz/SketchyBar/issues/827
 sketchybar --bar \
   position=top \
   height=40 \
@@ -22,7 +26,7 @@ sketchybar --bar \
   color=$BAR_COLOR \
   border_color=$BAR_BORDER_COLOR \
   border_width=0 \
-  shadow=on \
+  shadow=off \
   sticky=on \
   padding_left=10 \
   padding_right=10 \

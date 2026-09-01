@@ -3,6 +3,7 @@
 .env
 !.vimrc
 !.zshrc
+!.zshenv
 !.fzfrc
 !.gitignore
 !.tmux.conf
@@ -29,6 +30,11 @@
 !LaunchAgents/
 
 !scripts/
+
+# AI scratch workspace: track only its context file, never the scratch contents.
+!ai-sandbox/
+ai-sandbox/*
+!ai-sandbox/AGENTS.md
 
 !DOTFILES.md
 !CLAUDE.md

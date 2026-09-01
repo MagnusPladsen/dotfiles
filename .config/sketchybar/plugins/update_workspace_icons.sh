@@ -19,9 +19,11 @@ update_space_icons() {
     sketchybar --set space.$sid label="$icon_strip"
 }
 
-# Update all workspaces to ensure clean state
+# Update all workspaces to ensure clean state.
+# Numeric filter keeps the layout-manager stash workspace (layouts.json
+# "stashWorkspace", default "S") out of the bar. See items/spaces.sh.
 for monitor in $(aerospace list-monitors --format "%{monitor-appkit-nsscreen-screens-id}"); do
-    for sid in $(aerospace list-workspaces --monitor "$monitor"); do
+    for sid in $(aerospace list-workspaces --monitor "$monitor" | grep -E '^[0-9]+$'); do
         update_space_icons "$sid"
     done
 done
