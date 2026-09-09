@@ -120,16 +120,66 @@ Channel configs are TOML files in `~/.config/television/cable/`. Each has: `[met
 
 ## Behavior Rules
 
-- **Keep asks short and scannable** — when asking me a question, or listing what
-  I need to do, use a clear heading and bullets. One line per item, action
-  first. No prose paragraphs around the ask; reasoning goes in a short clause
-  after a dash, or in the work itself. This applies to questions and to-dos —
-  explanations of finished work can be written normally.
+- **Keep asks short and scannable** — see `## Response Formatting` below for the
+  full rule, including where asks and disclosures must go.
 - **Always ask before modifying `.zshrc`** — critical config, easy to break
 - **Prefer bun over npm** as package manager
 - **Use `dotfiles` alias** for any git operations on home directory configs (not `git`)
 - **Use `claude-notes` alias** when working on the personal Obsidian vault
 - **Never commit secrets/tokens** — extra caution with `.env`, API keys, credentials
+
+## Response Formatting
+
+Applies to every chat response that asks me something or tells me something specific
+I need to know, decide, or disclose. Does not apply to the interactive question modal
+(`AskUserQuestion`), which stays as it is.
+
+### Must
+- Group related content under short bold or `###` headers. No wall of prose.
+- Write points, not paragraphs. One idea per point.
+- Keep every point to one or two lines. Cut hedging, preamble, and restatement.
+- Lead each point with the thing itself, then the detail.
+- Name specifics: file, symbol, ticket key, value, path. Never "some places" or
+  "a few things".
+
+### Asks and disclosures must not float in the text
+
+Anything I have to act on goes in a dedicated block at the end of the response, never
+mixed into the informational body. Push the blocks well clear of the body: a blank
+line, two `---` rules separated by a blank line, then the header. The double rule
+renders as a visible gap band in every markdown renderer, where extra blank lines
+alone would collapse.
+
+```
+
+---
+
+---
+
+## ❓ NEEDS YOUR CALL
+
+## ⚠️ HEADS UP
+```
+
+- `❓ NEEDS YOUR CALL` — questions, decisions, and anything blocking further work.
+- `⚠️ HEADS UP` — caveats, things deliberately not done, unverified claims, risks
+  accepted.
+- `##`, caps, and the coloured marker are the point: the block must be impossible to
+  miss when skimming. Do not soften them to `###`, sentence case, or a bare arrow.
+- The double rule goes before the first block only. Never between the two blocks.
+- Both go last, in that order. Exception: if the whole task is blocked, put
+  `❓ NEEDS YOUR CALL` first so it is the first thing read.
+- Number the items inside each block so I can answer "1 and 3".
+- Omit a block entirely when it is empty. Never manufacture an ask to fill it.
+- One of each per response. Merge related items rather than repeating the header.
+- These are the only two emoji used in a response. Do not add emoji anywhere else.
+
+### Avoid
+- Burying a question, decision, or caveat in a body point. It belongs in a block above.
+- Ending on an informational point when something is still waiting on me.
+- Explaining what you are about to say before saying it.
+- Repeating a point in a summary line after already making it.
+- Long quoted excerpts when a reference and one line will do.
 
 ## macOS Window Management
 
