@@ -169,11 +169,14 @@ outer.right =      10
 # '''
 
 
-# Popup floating windows: open once, focus on repeat press. See
-# ~/scripts/popup-kitty.sh. Titles are 'popup-term'/'popup-omp', both matched by
-# the 'popup' on-window-detected rule below.
-alt-t = 'exec-and-forget POPUP_DIR="$HOME" $HOME/scripts/popup-kitty.sh term'
+# Plain tiled terminal in the currently focused workspace. See
+# ~/scripts/new-kitty-window.sh - no 'popup' in the title, so the float rule
+# below leaves it alone and AeroSpace tiles it normally.
+alt-t = 'exec-and-forget $HOME/scripts/new-kitty-window.sh $HOME'
 
+# Popup floating window: open once, focus on repeat press. See
+# ~/scripts/popup-kitty.sh. Title 'popup-omp' is matched by the 'popup'
+# on-window-detected rule below.
 alt-c = 'exec-and-forget $HOME/scripts/popup-kitty.sh omp zsh -ic omp'
 
 # Key binding to run window layout cinfig from script
