@@ -15,6 +15,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | `.tmux.conf` | tmux configuration |
 | `.gitignore` | Dotfiles allowlist (bare repo pattern: `/*` + `!` exceptions) |
 | `.gitmodules` | Git submodules |
+| `CLAUDE.md` | Claude Code instructions for the home directory (dotfile workflow, key paths, cmux/tv reference, behavior and response-formatting rules) |
 
 ### Window Management — `.config/aerospace/`
 
