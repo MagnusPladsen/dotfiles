@@ -120,6 +120,11 @@ Channel configs are TOML files in `~/.config/television/cable/`. Each has: `[met
 
 ## Behavior Rules
 
+- **Keep asks short and scannable** — when asking me a question, or listing what
+  I need to do, use a clear heading and bullets. One line per item, action
+  first. No prose paragraphs around the ask; reasoning goes in a short clause
+  after a dash, or in the work itself. This applies to questions and to-dos —
+  explanations of finished work can be written normally.
 - **Always ask before modifying `.zshrc`** — critical config, easy to break
 - **Prefer bun over npm** as package manager
 - **Use `dotfiles` alias** for any git operations on home directory configs (not `git`)
