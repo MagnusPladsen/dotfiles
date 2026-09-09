@@ -174,10 +174,9 @@ outer.right =      10
 # below leaves it alone and AeroSpace tiles it normally.
 alt-t = 'exec-and-forget $HOME/scripts/new-kitty-window.sh $HOME'
 
-# Popup floating window: open once, focus on repeat press. See
-# ~/scripts/popup-kitty.sh. Title 'popup-omp' is matched by the 'popup'
-# on-window-detected rule below.
-alt-c = 'exec-and-forget $HOME/scripts/popup-kitty.sh omp zsh -ic omp'
+# Same plain tiled terminal as alt-t, but it starts claude-op right away.
+# The shell stays alive after claude exits so the window is still usable.
+alt-c = '''exec-and-forget $HOME/scripts/new-kitty-window.sh $HOME zsh -ic "claude-op; exec zsh"'''
 
 # Key binding to run window layout cinfig from script
 alt-s = 'exec-and-forget $HOME/.config/aerospace/run-aerospace-layout-manager.sh'
