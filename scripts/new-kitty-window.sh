@@ -23,6 +23,8 @@ KITTY="$(command -v kitty || true)"
 # Trailing "$@" (if any) is the program to run inside the new window.
 "$KITTY" --single-instance --directory "$WORKDIR" "$@" &
 
-# LaunchServices activation: the CLI above returns immediately when an instance
+# Bring kitty to the front: the CLI above returns immediately when an instance
 # already exists, and the new window would otherwise open behind the focused app.
-open -a "/Applications/kitty.app" >/dev/null 2>&1
+# Don't use `open -a` here - it sends a reopen event, which makes kitty spawn a
+# second window of its own.
+osascript -e 'tell application id "net.kovidgoyal.kitty" to activate' >/dev/null 2>&1
