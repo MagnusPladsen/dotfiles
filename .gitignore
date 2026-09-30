@@ -13,6 +13,7 @@
 !.claude/
 .claude/*
 !.claude/settings.json
+!.claude/output-styles/
 .config/*
 .config/espanso/match/priv.yml
 !.config/nvim/

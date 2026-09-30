@@ -55,6 +55,23 @@
             "command": "[ -n \"$SUPERSET_HOME_DIR\" ] && [ -x \"$SUPERSET_HOME_DIR/hooks/notify.sh\" ] && SUPERSET_HOOK_HARNESS=claude \"$SUPERSET_HOME_DIR/hooks/notify.sh\" || true"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/scripts/claude-roast.sh\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/scripts/claude-done-sound.sh\"",
+            "async": true
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -218,5 +235,57 @@
       "Wiping my ass with your README",
       "Writing my suicide note in YAML"
     ]
-  }
+  },
+  "spinnerTipsOverride": {
+    "excludeDefault": true,
+    "tips": [
+      "If it compiles, ship it. If it does not, ship it anyway and blame CI.",
+      "Every bug is a feature you have not written a changelog for yet.",
+      "Code is not legacy until the person who wrote it is dead. Hang in there.",
+      "git blame is just a list of suspects.",
+      "Tests are for people who do not trust themselves. You should not trust yourself.",
+      "The cloud is just someone else's computer, and they hate you too.",
+      "Nothing is more permanent than a temporary fix.",
+      "It works on my machine. Ship my machine.",
+      "Sleep is a bug in the human runtime. Patch it with coffee.",
+      "Comments lie. Code lies too, but at least it compiles.",
+      "Hope is not a deployment strategy. It is just the one we use.",
+      "Your therapist cannot help you with merge conflicts.",
+      "rm -rf is the only truly honest refactor.",
+      "Friday deploys build character. And ruin weekends.",
+      "When in doubt, add another layer of abstraction until nobody understands it. Including you.",
+      "One day you will die, and your TODOs will still be there.",
+      "Estimates are just lies with a unit of time.",
+      "The docs are out of date. They were out of date when they were written.",
+      "Every senior dev is just a junior dev with more trauma.",
+      "Death and taxes are certain. So is the next breaking change on npm.",
+      "Do not worry about the bug. Worry about the three it is hiding.",
+      "Retry until it works, then call it flaky.",
+      "You cannot have production incidents if you never ship.",
+      "The stack trace is not the enemy. You are.",
+      "99 little bugs in the code. Patch one, compile it again. 127 little bugs in the code.",
+      "There are two hard problems: cache invalidation, naming things, and off-by-one errors.",
+      "Your mother reviewed this PR. She requested changes.",
+      "Legacy code is just code that has survived long enough to become everyone's problem.",
+      "The real 10x engineer is the bug you shipped on Friday.",
+      "Kubernetes: because one thing going wrong was not enough."
+    ]
+  },
+  "companyAnnouncements": [
+    "Welcome back. The bugs missed you. Nobody else did.",
+    "Another day, another chance to break prod.",
+    "Good news: your code still runs. Bad news: nobody knows why.",
+    "Claude Code is ready. Your mother is not.",
+    "Starting session. Lowering expectations.",
+    "Loading patience... 3%",
+    "Remember: everything you write today is tomorrow's legacy code.",
+    "Session started. Your commit history has been forwarded to HR.",
+    "Hei. La oss få dette overstått.",
+    "Today's forecast: 100% chance of merge conflicts.",
+    "You again? Fine.",
+    "Your last PR is still being laughed at in Slack.",
+    "Coffee first. Then we ruin something.",
+    "Initialising. Please hold while I lower my standards."
+  ],
+  "outputStyle": "Grumpy Norwegian Sysadmin"
 }
