@@ -2,9 +2,9 @@
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # SketchyBar — Vesper, notch black (peach + mint on #000, no border)
-#   left:  1 2 3 (4) 5 6  kitty  ~/git/fraktas   (focused workspace = peach pill)
-#   right: cpu ▬▭ mem ▬▬▭ 󰖩 󰁹 82% 14:32
-# Other themes: ~/.config/sketchybar.prompt/, ~/.config/sketchybar.tokyo-night/
+#   left:   1 2 3 (4) 5 6  kitty  ~/git/fraktas   (focused workspace = peach pill)
+#   right: cpu ▬▭ mem ▬▬▭ 󰖩 󰁹 82% wed 30 sep 14:32
+# Previous Tokyo Night bar: dotfiles tag sketchybar-tokyo-night (see ~/README.md)
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
@@ -36,13 +36,19 @@ sketchybar --bar \
   topmost=window
 
 # ── Defaults ────────────────────────────────────────
+# Type scale: text Martian Mono 10pt (date + time 11pt), Nerd Font glyphs
+# 13pt (Apple logo 15pt).
+# Colour roles: status items on the right are one grey (MUTED): text, glyphs
+# and meters, except the date in light grey. PEACH only marks focus
+# (workspace pill) and the time. RED only
+# warns (cpu/mem over threshold, low battery).
 default=(
   padding_left=0
   padding_right=0
   icon.drawing=off
-  icon.font="$FONT:Std Rg:11.0"
+  icon.font="$FONT:Std Rg:10.0"
   icon.color=$MUTED
-  label.font="$FONT:Std Rg:11.0"
+  label.font="$FONT:Std Rg:10.0"
   label.color=$FG
   label.padding_left=0
   label.padding_right=0
@@ -59,11 +65,12 @@ sketchybar --default "${default[@]}"
 sketchybar --add event aerospace_workspace_change
 sketchybar --add event aerospace_focus_change
 
-# ── Left: workspaces, then focused app + window title ──
+# ── Left: Apple menu, workspaces, then focused app + window title ──
+source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/front_app.sh"
 
-# ── Right (added right to left): clock, battery, internet, mem, cpu ──
+# ── Right (added right to left): time + date, battery, internet, mem, cpu ──
 source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/wifi.sh"

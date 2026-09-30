@@ -67,26 +67,19 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 
 ### Status Bar — `.config/sketchybar/`
 
-"Vesper" theme (notch black): pure `#000` bar with no border, so the notch blends in; peach and mint accents, Martian Mono (`brew install --cask font-martian-mono`). 32pt on the built-in display so it ends exactly at the bottom of the notch (30pt elsewhere). Left: workspace numbers (the focused one is a peach pill), then the focused app and its window title. Right: `cpu` and `mem` meters, internet (Wi-Fi / ethernet / offline glyph), battery, time.
+"Vesper" theme (notch black): pure `#000` bar with no border, so the notch blends in; one grey for all status items and a single peach accent (focused workspace, time), Martian Mono (`brew install --cask font-martian-mono`). 32pt on the built-in display so it ends exactly at the bottom of the notch (30pt elsewhere). Left: Apple logo (opens the Apple menu), workspace numbers (the focused one is a peach pill), then the focused app and its window title. Right: `cpu` and `mem` meters, internet (Wi-Fi / ethernet / offline glyph), battery, date and time.
 
 | File | Purpose |
 |------|---------|
 | `sketchybarrc` | Main SketchyBar config: bar look, defaults, item order |
 | `colors.sh` | Theme colours (Vesper) |
-| `items/*.sh` | Bar items in use: spaces, front_app (app + window title), cpu, ram, wifi, battery, clock. `separator` and `volume` are kept but not loaded |
-| `plugins/*.sh` | Item scripts. `spaces_update.sh` redraws all workspace items per AeroSpace workspace change (2 `aerospace` calls). `front_app.sh` reads the focused window from AeroSpace on app switch, AeroSpace's `on-focus-changed` hook, and every 3s. `icon_map_fn.sh` is unused by this theme but kept: `~/.config/sketchybar.backup/` reads it |
+| `items/*.sh` | Bar items in use: apple, spaces, front_app (app + window title), cpu, ram, wifi, battery, clock (date + time). `separator` and `volume` are kept but not loaded |
+| `plugins/*.sh` | Item scripts. `spaces_update.sh` redraws all workspace items per AeroSpace workspace change (2 `aerospace` calls). `front_app.sh` reads the focused window from AeroSpace on app switch, AeroSpace's `on-focus-changed` hook, and every 3s. |
 
-**Other themes (full copies, not tracked):**
-
-| Folder | Theme |
-|--------|-------|
-| `~/.config/sketchybar.prompt/` | "Prompt": text-only, GitHub Dark Dimmed, Fira Code |
-| `~/.config/sketchybar.tokyo-night/` | Previous Tokyo Night Storm bar (also dotfiles tag `sketchybar-tokyo-night`) |
-
-To switch, e.g. back to Tokyo Night:
+**Reverting to the previous Tokyo Night bar:** it's saved in the dotfiles tag `sketchybar-tokyo-night`:
 
 ```bash
-mv ~/.config/sketchybar ~/.config/sketchybar.vesper && cp -R ~/.config/sketchybar.tokyo-night ~/.config/sketchybar && sketchybar --reload
+dotfiles checkout sketchybar-tokyo-night -- .config/sketchybar && sketchybar --reload
 ```
 
 ### Window Borders — `.config/borders/`
