@@ -40,3 +40,5 @@ ai-sandbox/*
 !CLAUDE.md
 
 *-lock*
+# Zed database lock files, rewritten on every launch
+.config/zed/**/lock.mdb
