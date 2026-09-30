@@ -63,15 +63,6 @@
             "command": "bash \"$HOME/scripts/claude-roast.sh\""
           }
         ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME/scripts/claude-done-sound.sh\"",
-            "async": true
-          }
-        ]
       }
     ],
     "PostToolUse": [
