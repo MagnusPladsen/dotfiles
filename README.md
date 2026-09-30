@@ -47,6 +47,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | `alt-slash` | Toggle layout between horizontal and vertical tiles |
 | `alt-shift-minus/equal` | Resize window smaller/larger |
 | `alt-w` | Close focused window |
+| `alt-f` | Toggle fullscreen (focused window fills the workspace) |
 
 **Workspaces**
 
@@ -63,7 +64,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 |------------|--------|
 | `alt-shift-;` | Enter service mode |
 
-*Service mode:* `esc` reload config, `r` reset layout, `f` toggle float/tile, `backspace` close all windows but current.
+*Service mode:* `esc` reload config, `r` reset layout, `f` toggle float/tile, `b` balance window sizes, `backspace` close all windows but current.
 
 ### Status Bar — `.config/sketchybar/`
 

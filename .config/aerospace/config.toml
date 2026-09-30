@@ -8,11 +8,7 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6"]
 # Launch Sketchybar
 after-startup-command = ['exec-and-forget sketchybar']
 
-# Notify Sketchybar about workspace change
-#exec-on-workspace-change = ['/bin/bash', '-c',
-# '~/.config/aerospace/pip-move.sh && sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
-#]
-
+# Notify Sketchybar about workspace change, then keep PiP windows on the focused workspace
 exec-on-workspace-change = [
   '/bin/bash',
   '-c',
@@ -55,20 +51,32 @@ on-focus-changed = ['exec-and-forget sketchybar --trigger aerospace_focus_change
 # Also see: https://nikitabobko.github.io/AeroSpace/goodness#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
 
-# [[on-window-detected]]
-# if.app-id = 'com.apple.systempreferences'
-# if.app-name-regex-substring = 'settings'
-# if.window-title-regex-substring = 'substring'
-# if.workspace = 'workspace-name'
-# if.during-aerospace-startup = true
-# check-further-callbacks = true
-# run = ['layout floating', 'move-node-to-workspace S']  # The callback itself
-
 # Floating windows
 
 # Finder 
 [[on-window-detected]]
 if.app-name-regex-substring = 'finder'
+check-further-callbacks = true
+run = 'layout floating'
+
+# Small utility windows
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.calculator'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.archiveutility'
+check-further-callbacks = true
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
 check-further-callbacks = true
 run = 'layout floating'
 
@@ -175,16 +183,6 @@ outer.right =      0
 
 # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
-# See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-# You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
-# alt-enter = '''exec-and-forget osascript -e '
-# tell application "Terminal"
-#     do script
-#     activate
-# end tell'
-# '''
-
-
 # Plain tiled terminal in the currently focused workspace. See
 # ~/scripts/new-kitty-window.sh - no 'popup' in the title, so the float rule
 # below leaves it alone and AeroSpace tiles it normally.
@@ -205,6 +203,11 @@ alt-shift-r = 'reload-config'
 # work still prompts and close-to-tray apps just hide.
 # See: https://nikitabobko.github.io/AeroSpace/commands#close
 alt-w = 'close'
+
+# Focused window fills the workspace; press again to put it back in the layout.
+# AeroSpace's own fullscreen, not macOS native (no animation, no separate Space).
+# See: https://nikitabobko.github.io/AeroSpace/commands#fullscreen
+alt-f = 'fullscreen'
 
 alt-shift-left = 'join-with left'
 alt-shift-down = 'join-with down'
@@ -257,12 +260,5 @@ alt-shift-semicolon = 'mode service'
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+b = ['balance-sizes', 'mode main'] # Reset all splits in the workspace to equal sizes
 backspace = ['close-all-windows-but-current', 'mode main']
-
-#[workspace-to-monitor-force-assignment]
-#1 = '^Built-in.*$'
-#2 = '^DELL U.*$'
-#3 = '^DELL S.*$'
-#     4 = '^dell$'
-#     5 = 'main'
-#     6 = '^elgato$'
