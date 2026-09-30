@@ -114,6 +114,6 @@ export PATH="/Users/magnuspladsen/.antigravity/antigravity/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# ── Zoxide (must be at the end of .zshrc) ────────────────────────
-eval "$(zoxide init --cmd cd zsh)"
+# ── Shell integrations (zoxide must be last) ────────────────────
 eval "$(tv init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
