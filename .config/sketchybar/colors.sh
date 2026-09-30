@@ -1,36 +1,24 @@
 #!/bin/bash
 
-# Tokyo Night Storm — Color Palette for Sketchybar
-# https://github.com/enkia/tokyo-night-vscode-theme
+# Vesper — warm-neutral black with peach and mint, for SketchyBar
+# https://github.com/raunofreiberg/vesper
+# Other themes: ~/.config/sketchybar.prompt/, ~/.config/sketchybar.tokyo-night/
 
-# Base colors
-export BAR_COLOR=0xe61a1b26        # bar background (90% opacity)
-export BAR_BORDER_COLOR=0xff16161e  # bar border
+export BAR_COLOR=0xff000000       # bar background: pure black, same as the notch
+export BAR_BORDER=0xff1c1c1c      # hairline around the bar
 
-# Foreground
-export WHITE=0xffc0caf5             # main text (lavender white)
-export DIM=0xff565f89               # muted/inactive text
-export TRANSPARENT=0x00000000
+export FG=0xffffffff              # main text, active workspace apps
+export MUTED=0xff8b8b8b           # labels (cpu, mem, battery icon)
+export OCCUPIED=0xffb5b5b5        # workspaces with windows
+export FAINT=0xff3d3d3d           # empty workspaces
 
-# Accent colors
-export BLUE=0xff7aa2f7              # active/focused (bright blue)
-export PURPLE=0xffbb9af7            # front app / highlight
-export CYAN=0xff7dcfff              # secondary accent (sky cyan)
-export GREEN=0xff9ece6a             # healthy/ok states
-export RED=0xfff7768e               # warning/critical (coral)
-export YELLOW=0xffe0af68            # charging/amber
-export ORANGE=0xffff9e64            # warm accent
+export SURFACE=0xff121212         # active workspace box
+export SURFACE_BORDER=0xff242424  # active workspace box border
+export TRACK=0xff1a1a1a           # meter track
 
-# Backgrounds
-export BG_1=0xff24283b             # surface (slightly lighter than base)
-export BG_2=0xff292e42             # elevated surface
-export BG_HIGHLIGHT=0x403d59a1    # subtle blue highlight (25% opacity)
+export PEACH=0xffffc799           # accent: active number, clock, mem meter
+export MINT=0xff99ffe4            # second accent: cpu meter, charging
+export RED=0xffff8080             # high load / low battery
 
-# Workspace colors
-export SPACE_ACTIVE=0xff7aa2f7     # focused workspace bg
-export SPACE_OCCUPIED=0x44565f89   # has windows, not focused
-export SPACE_EMPTY=0x00000000      # empty workspace (invisible)
-
-# Popup colors
-export POPUP_BG=0xf024283b         # popup background (94% opacity)
-export POPUP_BORDER=0xff3d59a1     # popup border (muted blue)
+export POPUP_BG=0xf0161616
+export POPUP_BORDER=0xff282828

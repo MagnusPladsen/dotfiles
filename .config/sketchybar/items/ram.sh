@@ -1,31 +1,17 @@
 #!/bin/bash
 
-# ── RAM Usage + Popup ──────────────────────────────
+# ── Memory: "mem" + peach meter ─────────────────────
 
-sketchybar --add item ram right \
+sketchybar --add slider ram right 34 \
   --set ram \
+    padding_right=18 \
     update_freq=10 \
-    icon=$ICON_RAM \
-    icon.color=$GREEN \
-    icon.font="$FONT:Bold:16.0" \
-    icon.padding_right=4 \
-    label.font="$LABEL_FONT:Semibold:12.0" \
-    label.color=$WHITE \
-    label.width=50 \
-    background.drawing=off \
-    script="$PLUGIN_DIR/ram.sh" \
-    click_script="sketchybar --set ram popup.drawing=toggle" \
-  --add item ram.details popup.ram \
-  --set ram.details \
-    icon.drawing=off \
-    label.font="Hack Nerd Font Mono:Regular:11.0" \
-    label.color=$WHITE \
-    label.padding_left=12 \
-    label.padding_right=12 \
-  --add item ram.swap popup.ram \
-  --set ram.swap \
-    icon.drawing=off \
-    label.font="Hack Nerd Font Mono:Regular:11.0" \
-    label.color=$DIM \
-    label.padding_left=12 \
-    label.padding_right=12
+    icon.drawing=on \
+    icon="mem" \
+    icon.padding_right=8 \
+    slider.highlight_color=$PEACH \
+    slider.background.color=$TRACK \
+    slider.background.height=5 \
+    slider.background.corner_radius=3 \
+    slider.knob.drawing=off \
+    script="$PLUGIN_DIR/ram.sh"

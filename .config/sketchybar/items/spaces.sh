@@ -1,43 +1,26 @@
 #!/bin/bash
 
-# ── AeroSpace Workspace Indicators ─────────────────
-# Dynamic workspace items with app icons.
-# Numeric filter: aerospace-layout-manager parks windows on the stash workspace
-# ("stashWorkspace" in layouts.json, default "S") while it arranges layouts. If
-# the bar is (re)loaded during that window, the stash gets baked in as a
-# permanent space.S item. Only the persistent numeric workspaces belong here.
-ws_list() { aerospace list-workspaces --monitor "$1" | grep -E '^[0-9]+$'; }
+# ── Workspaces ──────────────────────────────────────
+# Number per workspace. The focused one is a peach pill with a black number;
+# occupied ones are light grey, empty ones faint. Every item shows on every
+# display. plugins/spaces_update.sh redraws them all on each AeroSpace
+# workspace change.
+# Numeric filter keeps aerospace-layout-manager's stash workspace ("S") out.
 
-for monitor in $(aerospace list-monitors --format "%{monitor-appkit-nsscreen-screens-id}"); do
-  for sid in $(ws_list "$monitor"); do
-    # Map workspaces to displays
-    display_id="1"
-    if [ "$sid" -ge 6 ] && [ "$sid" -le 7 ]; then
-      display_id="2"
-    fi
-
-    sketchybar --add item space.$sid left \
-      --set space.$sid \
-        display="$display_id" \
-        drawing=on \
-        background.color=$SPACE_OCCUPIED \
-        background.corner_radius=6 \
-        background.drawing=on \
-        background.border_color=$BLUE \
-        background.border_width=0 \
-        background.height=26 \
-        icon="$sid" \
-        icon.font="$FONT:Bold:13.0" \
-        icon.color=$DIM \
-        icon.padding_left=8 \
-        icon.padding_right=2 \
-        label.font="sketchybar-app-font:Regular:14.0" \
-        label.padding_right=20 \
-        label.padding_left=0 \
-        label.y_offset=-1 \
-        label.color=$WHITE \
-        click_script="aerospace workspace $sid"
-  done
+for sid in $(aerospace list-workspaces --all | grep -E '^[0-9]+$'); do
+  sketchybar --add item space.$sid left \
+    --set space.$sid \
+      icon.drawing=on \
+      icon="$sid" \
+      icon.color=$FAINT \
+      icon.padding_left=6 \
+      icon.padding_right=6 \
+      label.drawing=off \
+      background.color=$PEACH \
+      background.corner_radius=5 \
+      background.height=20 \
+      background.drawing=off \
+      click_script="aerospace workspace $sid"
 done
 
 # One hidden item updates all workspace items per event (two aerospace calls
