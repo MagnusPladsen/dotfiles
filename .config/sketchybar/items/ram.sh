@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ── Memory: "mem" + peach meter ─────────────────────
+# ── Memory: "mem" + grey meter ─────────────────────
 
 sketchybar --add slider ram right 34 \
   --set ram \
@@ -9,7 +9,7 @@ sketchybar --add slider ram right 34 \
     icon.drawing=on \
     icon="mem" \
     icon.padding_right=8 \
-    slider.highlight_color=$PEACH \
+    slider.highlight_color=$MUTED \
     slider.background.color=$TRACK \
     slider.background.height=5 \
     slider.background.corner_radius=3 \

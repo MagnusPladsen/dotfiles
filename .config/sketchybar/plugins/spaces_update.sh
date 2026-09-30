@@ -10,8 +10,8 @@
 CONFIG_DIR="${CONFIG_DIR:-$HOME/.config/sketchybar}"
 source "$CONFIG_DIR/colors.sh"
 
-REGULAR="Martian Mono:Std Rg:11.0"
-BOLD="Martian Mono:Std Bd:11.0"
+REGULAR="Martian Mono:Std Rg:10.0"
+BOLD="Martian Mono:Std Bd:10.0"
 
 focused="${FOCUSED_WORKSPACE:-$(aerospace list-workspaces --focused)}"
 occupied=$(aerospace list-windows --all --format '%{workspace}' | sort -u)

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ── CPU: "cpu" + mint meter ─────────────────────────
+# ── CPU: "cpu" + grey meter ─────────────────────────
 
 sketchybar --add slider cpu right 34 \
   --set cpu \
@@ -9,7 +9,7 @@ sketchybar --add slider cpu right 34 \
     icon.drawing=on \
     icon="cpu" \
     icon.padding_right=8 \
-    slider.highlight_color=$MINT \
+    slider.highlight_color=$MUTED \
     slider.background.color=$TRACK \
     slider.background.height=5 \
     slider.background.corner_radius=3 \

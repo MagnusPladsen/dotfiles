@@ -9,7 +9,7 @@ USED_PCT=$(vm_stat | awk -v total="$(sysctl -n hw.memsize)" -v page="$(pagesize)
   /Pages active/ || /Pages wired/ || /occupied by compressor/ { gsub(/\./, "", $NF); used += $NF }
   END { printf "%d", used * page * 100 / total }')
 
-COLOR=$PEACH
+COLOR=$MUTED
 [ "$USED_PCT" -gt 85 ] && COLOR=$RED
 
 sketchybar --set "$NAME" slider.percentage="$USED_PCT" slider.highlight_color=$COLOR
