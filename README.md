@@ -95,6 +95,21 @@ defaults write -g NSConvolutionOverride1 -float 6    # apply (1 is the smallest 
 defaults delete -g NSConvolutionOverride1            # revert to macOS 26 rounding
 ```
 
+**macOS window settings for AeroSpace:** not tracked in dotfiles. Each line applies a setting; `defaults delete <domain> <key>` reverts it.
+
+```bash
+# Mission Control groups windows by app (AeroSpace parks hidden windows in a corner, so they'd show tiny and scattered otherwise)
+defaults write com.apple.dock expose-group-apps -bool true && killall Dock
+
+# Turn off macOS drag-to-tile so it doesn't fight AeroSpace (UI: Desktop & Dock → Windows)
+defaults write com.apple.WindowManager EnableTilingByEdgeDrag -bool false
+defaults write com.apple.WindowManager EnableTopTilingByEdgeDrag -bool false
+defaults write com.apple.WindowManager EnableTilingOptionAccelerator -bool false
+
+# Drag any window from anywhere with ctrl-cmd (apps pick it up when relaunched)
+defaults write -g NSWindowShouldDragOnGesture -bool true
+```
+
 ### Terminals
 
 #### Ghostty — `.config/ghostty/`
