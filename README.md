@@ -86,7 +86,7 @@ dotfiles checkout sketchybar-tokyo-night -- .config/sketchybar && sketchybar --r
 
 | File | Purpose |
 |------|---------|
-| `bordersrc` | JankyBorders config: 6px `round` border that follows each window's corner radius |
+| `bordersrc` | JankyBorders config: 2px `square` border |
 
 **Window corner radius (macOS 26):** set system-wide to 1, nearly square (macOS 15 used 10; macOS 26's default is 26), with an unofficial preference. `0` is ignored (windows keep 26), not tracked in dotfiles. Apps pick it up when relaunched or after logging out. Some dialogs stay more rounded.
 
