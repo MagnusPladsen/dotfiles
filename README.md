@@ -101,6 +101,9 @@ defaults delete -g NSConvolutionOverride1            # revert to macOS 26 roundi
 # Mission Control groups windows by app (AeroSpace parks hidden windows in a corner, so they'd show tiny and scattered otherwise)
 defaults write com.apple.dock expose-group-apps -bool true && killall Dock
 
+# One Space set across all displays, recommended by AeroSpace (needs logout; UI: Desktop & Dock → Mission Control → "Displays have separate Spaces" off)
+defaults write com.apple.spaces spans-displays -bool true
+
 # Turn off macOS drag-to-tile so it doesn't fight AeroSpace (UI: Desktop & Dock → Windows)
 defaults write com.apple.WindowManager EnableTilingByEdgeDrag -bool false
 defaults write com.apple.WindowManager EnableTopTilingByEdgeDrag -bool false
