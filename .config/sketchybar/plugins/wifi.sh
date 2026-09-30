@@ -1,18 +1,17 @@
 #!/bin/bash
 
+# Glyph for how the Mac reaches the internet, from the default route:
+#   Wi-Fi 󰖩 / ethernet 󰈀 in grey, no route 󰖪 in red
+
 source "$CONFIG_DIR/colors.sh"
-source "$CONFIG_DIR/icons.sh"
 
-# Get WiFi info (modern macOS — airport binary was removed)
-SSID=$(ipconfig getsummary en0 2>/dev/null | grep '  SSID' | awk -F': ' '{print $2}' | xargs)
-IP=$(ipconfig getifaddr en0 2>/dev/null)
+iface=$(route -n get default 2>/dev/null | awk '/interface:/ {print $2}')
+wifi_dev=$(networksetup -listallhardwareports | awk '/Wi-Fi/ {getline; print $2}')
 
-if [ -n "$SSID" ]; then
-  sketchybar --set "$NAME" icon=$ICON_WIFI icon.color=$BLUE
-  sketchybar --set wifi.ssid label="$SSID"
-  sketchybar --set wifi.ip label="IP: ${IP:-No IP}"
+if [ -z "$iface" ]; then
+  sketchybar --set "$NAME" icon="󰖪" icon.color=$RED
+elif [ "$iface" = "$wifi_dev" ]; then
+  sketchybar --set "$NAME" icon="󰖩" icon.color=$MUTED
 else
-  sketchybar --set "$NAME" icon=$ICON_WIFI_OFF icon.color=$DIM
-  sketchybar --set wifi.ssid label="Not connected"
-  sketchybar --set wifi.ip label=""
+  sketchybar --set "$NAME" icon="󰈀" icon.color=$MUTED
 fi
