@@ -24,9 +24,9 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | File | Purpose |
 |------|---------|
 | `config.toml` | AeroSpace tiling WM config (keybindings, gaps, workspace-monitor assignments, floating rules) |
-| `layouts.json` | Workspace layout presets for `aerospace-layout-manager` |
+| `layouts.json` | App → workspace placement and root layout per workspace, read by `restore-workspaces.sh` |
 | `pip-move.sh` | Moves PiP windows to the focused workspace on workspace change |
-| `run-aerospace-layout-manager.sh` | Applies all layout presets from `layouts.json` |
+| `run-aerospace-layout-manager.sh` | Old `alt-s` script (symlink to `~/scripts/`), replaced by `restore-workspaces.sh`. Unbound |
 
 #### AeroSpace Keybindings
 
@@ -36,7 +36,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 |------------|--------|
 | `alt-t` | Open a tiled Kitty terminal in `~` in the currently focused workspace |
 | `alt-c` | Open a tiled Kitty terminal in `~` running `claude-op`; drops to a shell when Claude exits |
-| `alt-s` | Apply workspace layout presets from `layouts.json` |
+| `alt-s` | Restore app → workspace placement from `layouts.json` (`restore-workspaces.sh`) |
 
 **Window Focus & Movement (vim-style)**
 
@@ -156,7 +156,8 @@ Key custom channels: `files`, `procs`, `dotfiles`, `git-worktrees`, `git-repos`,
 | `new-kitty-window.sh` | Opens a plain tiled Kitty window in the currently focused AeroSpace workspace. `new-kitty-window.sh [directory] [command...]` (directory defaults to `~`; an optional command runs inside the new window). Uses `--single-instance` so the window lands on the current workspace instead of spawning a second Kitty instance. Bound to `alt-t` (plain shell) and `alt-c` (`claude-op`). |
 | `pip-move.sh` | Moves Picture-in-Picture windows (Firefox/Edge) to the currently focused workspace so PiP follows you when switching workspaces. Runs automatically on workspace change. |
 | `popup-kitty.sh` | Floating Kitty popup manager (800x500, translucent, blurred, centered). `popup-kitty.sh <name> [program...]` opens the window once and focuses it on repeat presses. Defaults to `~/ai-sandbox`; override with `POPUP_DIR`. Currently unbound - `alt-c` now opens a tiled window via `new-kitty-window.sh`. |
-| `run-aerospace-layout-manager.sh` | Reads layout presets from `layouts.json` and applies them all via `aerospace-layout-manager`. Restores predefined window arrangements. Bound to `alt-s`. |
+| `restore-workspaces.sh` | Moves each app in `~/.config/aerospace/layouts.json` to its workspace and sets each workspace's root layout. Reads all windows once, moves only misplaced ones, never changes focus, and launches listed apps that are not running. Bound to `alt-s`. |
+| `run-aerospace-layout-manager.sh` | Reads layout presets from `layouts.json` and applies them all via `aerospace-layout-manager`. Restores predefined window arrangements. Unbound: replaced by `restore-workspaces.sh`, which is faster and does not shuffle windows. |
 | `setup-project.sh` | Sets up a git worktree for development: copies env files from the main worktree, detects the package manager (bun/pnpm/yarn/npm), and installs dependencies. |
 | `start-claude-code.sh` | Cron-triggered script that runs `claude "hello world"` and logs the output. Used by the `com.user.claude-code-morning.plist` LaunchAgent. |
 | `tmux-lazygit.sh` | Opens lazygit in the current tmux pane's working directory. Used for tmux popup integration. |
@@ -175,7 +176,7 @@ Key custom channels: `files`, `procs`, `dotfiles`, `git-worktrees`, `git-repos`,
 | `t` | `tmux` | Short tmux |
 | `ta` | `tmux a` | Attach to tmux session |
 | `macos` | `pkill AeroSpace sketchybar borders` | Restart window management stack |
-| `tiles` | `open -a "AeroSpace" && run-aerospace-layout-manager.sh` | Launch tiling WM and apply layouts |
+| `tiles` | `open -a "AeroSpace" && ~/scripts/restore-workspaces.sh` | Launch tiling WM and apply layouts |
 | `pattymode` | `pkill AeroSpace sketchybar && open -a "Google Chrome"` | Kill WM stack and open Chrome |
 | `git-merge` | `git mergetool --tool=nvimdiff --no-prompt` | Open merge conflicts in Neovim diff |
 | `bupgrade` | `brew upgrade` | Upgrade Homebrew packages |
