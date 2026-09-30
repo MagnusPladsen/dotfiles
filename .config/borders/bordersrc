@@ -1,9 +1,9 @@
 #!/bin/bash
 
 options=(
-	style=round  # follows each window's own corner radius (set system-wide with
-	             # `defaults write -g NSConvolutionOverride1 -float 1`, see ~/README.md)
-	width=6.0
+	style=square  # square corners; window corner radius is set system-wide with
+	              # `defaults write -g NSConvolutionOverride1 -float 1`, see ~/README.md
+	width=2.0
 	hidpi=off
 	active_color=0xffb5b5b5  # light grey, same as the sketchybar date/occupied workspaces
 	inactive_color=0xff3d3d3d)  # faint grey, same as empty workspaces in sketchybar
