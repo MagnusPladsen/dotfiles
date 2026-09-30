@@ -137,12 +137,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 10
-inner.vertical =   10
-outer.left =       10
-outer.bottom =     10
-outer.top =        [{monitor.main = 20 }, 40] # main: notch menu-bar area already reserved; others: 30px bar + 10px gap
-outer.right =      10
+inner.horizontal = 6  # = JankyBorders width, so borders fill the gap instead of overlapping windows
+inner.vertical =   6
+outer.left =       6
+outer.bottom =     6
+outer.top =        [{monitor.main = 6 }, 36] # 6px (= border width) under the bar on both: main (built-in) already reserves the 32pt notch strip the bar fills; others: 30px bar + 6px
+outer.right =      6
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
