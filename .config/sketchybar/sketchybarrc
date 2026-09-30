@@ -3,7 +3,7 @@
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # SketchyBar — Vesper, notch black (peach + mint on #000, no border)
 #   left:  1 2 3 (4) 5 6  kitty  ~/git/fraktas   (focused workspace = peach pill)
-#   right: cpu ▬▭ mem ▬▬▭ 󰁹 82% 14:32
+#   right: cpu ▬▭ mem ▬▬▭ 󰖩 󰁹 82% 14:32
 # Other themes: ~/.config/sketchybar.prompt/, ~/.config/sketchybar.tokyo-night/
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -63,9 +63,10 @@ sketchybar --add event aerospace_focus_change
 source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/front_app.sh"
 
-# ── Right (added right to left): clock, battery, mem, cpu ──
+# ── Right (added right to left): clock, battery, internet, mem, cpu ──
 source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/wifi.sh"
 source "$ITEM_DIR/ram.sh"
 source "$ITEM_DIR/cpu.sh"
 
