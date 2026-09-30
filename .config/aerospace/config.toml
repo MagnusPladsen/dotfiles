@@ -91,6 +91,18 @@ if.window-title-regex-substring = 'Huddle'
 check-further-callbacks = true
 run = 'layout floating'
 
+# Peglin
+[[on-window-detected]]
+if.app-name-regex-substring = 'Peglin'
+check-further-callbacks = true
+run = 'layout floating'
+
+# Wine (all Wine-backed apps/games)
+[[on-window-detected]]
+if.app-name-regex-substring = 'wine'
+check-further-callbacks = true
+run = 'layout floating'
+
 # Superset — always tile on workspace 4
 [[on-window-detected]]
 if.app-name-regex-substring = 'Superset'

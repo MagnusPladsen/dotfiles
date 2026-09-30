@@ -18,6 +18,11 @@ shift || true
 KITTY="$(command -v kitty || true)"
 [[ -x "$KITTY" ]] || KITTY="/Applications/kitty.app/Contents/MacOS/kitty"
 
+# Check before launching: the activate step below must only run when an instance
+# already existed.
+KITTY_WAS_RUNNING=0
+pgrep -xq kitty && KITTY_WAS_RUNNING=1
+
 # --single-instance reuses the running kitty process, so the new OS window lands
 # on the current workspace instead of spawning a second app instance.
 # Trailing "$@" (if any) is the program to run inside the new window.
@@ -27,4 +32,9 @@ KITTY="$(command -v kitty || true)"
 # already exists, and the new window would otherwise open behind the focused app.
 # Don't use `open -a` here - it sends a reopen event, which makes kitty spawn a
 # second window of its own.
-osascript -e 'tell application id "net.kovidgoyal.kitty" to activate' >/dev/null 2>&1
+# Skip on a cold start: the kitty just launched isn't registered with
+# LaunchServices yet, so `activate` would start (or reopen) kitty a second time
+# and you'd get two windows. A freshly launched kitty takes focus on its own.
+if [[ $KITTY_WAS_RUNNING -eq 1 ]]; then
+  osascript -e 'tell application id "net.kovidgoyal.kitty" to activate' >/dev/null 2>&1
+fi
