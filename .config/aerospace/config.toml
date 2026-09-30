@@ -105,6 +105,12 @@ if.app-name-regex-substring = 'Peglin'
 check-further-callbacks = true
 run = 'layout floating'
 
+# Tales of Maj'Eyal (T-Engine)
+[[on-window-detected]]
+if.app-id = 'org.te4.T-Engine'
+check-further-callbacks = true
+run = 'layout floating'
+
 # Wine (all Wine-backed apps/games)
 [[on-window-detected]]
 if.app-name-regex-substring = 'wine'
