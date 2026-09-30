@@ -67,12 +67,27 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 
 ### Status Bar — `.config/sketchybar/`
 
+"Vesper" theme (notch black): pure `#000` bar with no border, so the notch blends in; peach and mint accents, Martian Mono (`brew install --cask font-martian-mono`). 32pt on the built-in display so it ends exactly at the bottom of the notch (30pt elsewhere). Left: workspace numbers (the focused one is a peach pill), then the focused app and its window title. Right: `cpu` and `mem` meters, battery, time.
+
 | File | Purpose |
 |------|---------|
-| `sketchybarrc` | Main SketchyBar config |
-| `colors.sh` / `icons.sh` | Theme colors and icon definitions |
-| `items/*.sh` | Bar items: battery, clock, cpu, front_app, ram, spaces, volume, wifi |
-| `plugins/*.sh` | Plugins: battery, clock, cpu, front_app, icon_map, ram, spaces_update, volume, wifi. `spaces_update.sh` redraws all workspace items per AeroSpace workspace change (2 `aerospace` calls). |
+| `sketchybarrc` | Main SketchyBar config: bar look, defaults, item order |
+| `colors.sh` | Theme colours (Vesper) |
+| `items/*.sh` | Bar items in use: spaces, front_app (app + window title), cpu, ram, battery, clock. `separator`, `volume` and `wifi` are kept but not loaded |
+| `plugins/*.sh` | Item scripts. `spaces_update.sh` redraws all workspace items per AeroSpace workspace change (2 `aerospace` calls). `front_app.sh` reads the focused window from AeroSpace on app switch, AeroSpace's `on-focus-changed` hook, and every 3s. `icon_map_fn.sh` is unused by this theme but kept: `~/.config/sketchybar.backup/` reads it |
+
+**Other themes (full copies, not tracked):**
+
+| Folder | Theme |
+|--------|-------|
+| `~/.config/sketchybar.prompt/` | "Prompt": text-only, GitHub Dark Dimmed, Fira Code |
+| `~/.config/sketchybar.tokyo-night/` | Previous Tokyo Night Storm bar (also dotfiles tag `sketchybar-tokyo-night`) |
+
+To switch, e.g. back to Tokyo Night:
+
+```bash
+mv ~/.config/sketchybar ~/.config/sketchybar.vesper && cp -R ~/.config/sketchybar.tokyo-night ~/.config/sketchybar && sketchybar --reload
+```
 
 ### Window Borders — `.config/borders/`
 

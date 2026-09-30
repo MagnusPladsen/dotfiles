@@ -1,74 +1,73 @@
 #!/bin/bash
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# SketchyBar — Tokyo Night Storm
-# FelixKratz-inspired config with AeroSpace integration
+# SketchyBar — Vesper, notch black (peach + mint on #000, no border)
+#   left:  1 2 3 (4) 5 6  kitty  ~/git/fraktas   (focused workspace = peach pill)
+#   right: cpu ▬▭ mem ▬▬▭ 󰁹 82% 14:32
+# Other themes: ~/.config/sketchybar.prompt/, ~/.config/sketchybar.tokyo-night/
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
 
 source "$CONFIG_DIR/colors.sh"
-source "$CONFIG_DIR/icons.sh"
 
-FONT="Hack Nerd Font"
-LABEL_FONT="MesloLGS NF"
+FONT="Martian Mono"
+ICON_FONT="Hack Nerd Font"
 
 # ── Bar Appearance ──────────────────────────────────
-# shadow MUST stay off: in sketchybar 2.24.0 the combination of blur_radius>0
-# and shadow=on smears the blur past the bar bounds (a band below the bar) and
-# causes shadow flicker in other windows. Upstream:
-# https://github.com/FelixKratz/SketchyBar/issues/827
+# notch_display_height: on the built-in screen the bar matches the notch
+# (32pt on this 16" MacBook), so it ends exactly where the notch does.
+# Other displays keep height=30.
+# shadow MUST stay off: in sketchybar 2.24.0 shadow=on causes shadow flicker
+# in other windows. Upstream: https://github.com/FelixKratz/SketchyBar/issues/827
 sketchybar --bar \
   position=top \
-  height=40 \
-  blur_radius=30 \
+  height=30 \
+  notch_display_height=32 \
   color=$BAR_COLOR \
-  border_color=$BAR_BORDER_COLOR \
+  border_color=$BAR_BORDER \
   border_width=0 \
+  blur_radius=0 \
   shadow=off \
   sticky=on \
-  padding_left=10 \
-  padding_right=10 \
+  padding_left=14 \
+  padding_right=14 \
   topmost=window
 
 # ── Defaults ────────────────────────────────────────
 default=(
-  padding_left=4
-  padding_right=4
-  icon.font="$FONT:Bold:14.0"
-  label.font="$LABEL_FONT:Semibold:13.0"
-  icon.color=$WHITE
-  label.color=$WHITE
-  icon.padding_left=4
-  icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=4
-  background.height=28
-  background.corner_radius=8
+  padding_left=0
+  padding_right=0
+  icon.drawing=off
+  icon.font="$FONT:Std Rg:11.0"
+  icon.color=$MUTED
+  label.font="$FONT:Std Rg:11.0"
+  label.color=$FG
+  label.padding_left=0
+  label.padding_right=0
+  background.drawing=off
   popup.background.color=$POPUP_BG
-  popup.background.corner_radius=10
+  popup.background.corner_radius=6
   popup.background.border_color=$POPUP_BORDER
   popup.background.border_width=1
-  popup.background.shadow.drawing=on
   updates=on
 )
 sketchybar --default "${default[@]}"
 
 # ── Events ──────────────────────────────────────────
 sketchybar --add event aerospace_workspace_change
+sketchybar --add event aerospace_focus_change
 
-# ── Left: Workspaces ───────────────────────────────
+# ── Left: workspaces, then focused app + window title ──
 source "$ITEM_DIR/spaces.sh"
-
-# ── Left: Front App ────────────────────────────────
 source "$ITEM_DIR/front_app.sh"
 
-# ── Right: System Items ────────────────────────────
+# ── Right (added right to left): clock, battery, mem, cpu ──
 source "$ITEM_DIR/clock.sh"
 source "$ITEM_DIR/battery.sh"
-source "$ITEM_DIR/volume.sh"
-source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/ram.sh"
+source "$ITEM_DIR/cpu.sh"
 
 # ── Force Initial Update ───────────────────────────
 sketchybar --update
