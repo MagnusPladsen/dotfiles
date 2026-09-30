@@ -16,6 +16,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | `.gitignore` | Dotfiles allowlist (bare repo pattern: `/*` + `!` exceptions) |
 | `.gitmodules` | Git submodules |
 | `CLAUDE.md` | Claude Code instructions for the home directory (dotfile workflow, key paths, cmux/tv reference, behavior and response-formatting rules) |
+| `.claude/settings.json` | Claude Code user settings: hooks, plugins, status line, and custom `spinnerVerbs` (dark-humour lines that replace the default "Cooking…" verbs) |
 
 ### Window Management — `.config/aerospace/`
 

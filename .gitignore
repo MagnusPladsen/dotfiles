@@ -10,6 +10,9 @@
 !tmux-lazygit.sh
 !dyn-dev.sh
 !.config/
+!.claude/
+.claude/*
+!.claude/settings.json
 .config/*
 .config/espanso/match/priv.yml
 !.config/nvim/
@@ -37,7 +40,7 @@ ai-sandbox/*
 !ai-sandbox/AGENTS.md
 
 !DOTFILES.md
-!CLAUDE.md
+!/CLAUDE.md
 
 *-lock*
 # Zed database lock files, rewritten on every launch
