@@ -55,6 +55,6 @@ jq -r '.layouts[] | "\(.workspace) \(.layout)"' "$CONFIG_FILE" |
   done
 
 # Moves don't fire exec-on-workspace-change, so refresh the bar's app icons
-[ "$moved" -gt 0 ] && "$HOME/.config/sketchybar/plugins/update_workspace_icons.sh"
+[ "$moved" -gt 0 ] && sketchybar --trigger aerospace_workspace_change
 
 echo "Moved $moved window(s)"

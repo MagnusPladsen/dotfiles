@@ -73,7 +73,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | `sketchybarrc` | Main SketchyBar config |
 | `colors.sh` / `icons.sh` | Theme colors and icon definitions |
 | `items/*.sh` | Bar items: battery, clock, cpu, front_app, ram, spaces, volume, wifi |
-| `plugins/*.sh` | Plugins: aerospace, battery, clock, cpu, front_app, icon_map, load_spaces, ram, space, space_windows, update_workspace_icons, volume, wifi |
+| `plugins/*.sh` | Plugins: battery, clock, cpu, front_app, icon_map, ram, spaces_update, volume, wifi. `spaces_update.sh` redraws all workspace items per AeroSpace workspace change (2 `aerospace` calls). Unused: aerospace, load_spaces, space, space_windows, update_workspace_icons |
 
 ### Window Borders — `.config/borders/`
 
