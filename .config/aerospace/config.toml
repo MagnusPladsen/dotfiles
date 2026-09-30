@@ -178,8 +178,9 @@ alt-t = 'exec-and-forget $HOME/scripts/new-kitty-window.sh $HOME'
 # The shell stays alive after claude exits so the window is still usable.
 alt-c = '''exec-and-forget $HOME/scripts/new-kitty-window.sh $HOME zsh -ic "claude-op; exec zsh"'''
 
-# Key binding to run window layout cinfig from script
-alt-s = 'exec-and-forget $HOME/.config/aerospace/run-aerospace-layout-manager.sh'
+# Restore app -> workspace placement from layouts.json. Only moves misplaced
+# windows and never changes focus. See ~/scripts/restore-workspaces.sh
+alt-s = 'exec-and-forget $HOME/scripts/restore-workspaces.sh'
 
 # Reload AeroSpace config
 alt-shift-r = 'reload-config'

@@ -51,7 +51,7 @@ alias sauce="source ~/.zshrc && echo '~/.zshrc reloaded'"
 alias t='tmux '
 alias ta='tmux a'
 alias macos='pkill AeroSpace sketchybar borders'
-alias tiles='open -a "AeroSpace" && ~/.config/aerospace/run-aerospace-layout-manager.sh'
+alias tiles='open -a "AeroSpace" && ~/scripts/restore-workspaces.sh'
 alias pattymode='pkill AeroSpace sketchybar && open -a "Google Chrome"'
 alias git-merge='git mergetool --tool=nvimdiff --no-prompt'
 alias bupgrade='brew upgrade'
