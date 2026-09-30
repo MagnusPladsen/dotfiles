@@ -16,7 +16,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | `.gitignore` | Dotfiles allowlist (bare repo pattern: `/*` + `!` exceptions) |
 | `.gitmodules` | Git submodules |
 | `CLAUDE.md` | Claude Code instructions for the home directory (dotfile workflow, key paths, cmux/tv reference, behavior and response-formatting rules) |
-| `.claude/settings.json` | Claude Code user settings: hooks, plugins, status line, and custom `spinnerVerbs` and `spinnerTipsOverride` (dark/dev-humour spinner lines and tips), `companyAnnouncements` (random startup roast), Stop hooks for `claude-roast.sh` and `claude-done-sound.sh`, and the `Grumpy Norwegian Sysadmin` output style |
+| `.claude/settings.json` | Claude Code user settings: hooks, plugins, status line, and custom `spinnerVerbs` and `spinnerTipsOverride` (dark/dev-humour spinner lines and tips), `companyAnnouncements` (random startup roast), a Stop hook for `claude-roast.sh`, and the `Grumpy Norwegian Sysadmin` output style |
 | `.claude/output-styles/` | Claude Code output styles. `grumpy-norwegian-sysadmin.md` keeps all work and formatting rules but answers as a deadpan Norwegian sysadmin |
 
 ### Window Management — `.config/aerospace/`
@@ -181,7 +181,6 @@ Key custom channels: `files`, `procs`, `dotfiles`, `git-worktrees`, `git-repos`,
 
 | Script | Purpose |
 |--------|---------|
-| `claude-done-sound.sh` | Claude Code Stop hook: a random novelty macOS voice sings a short line when Claude finishes a turn. Runs async. Mute with `touch ~/.claude/mute-done-sound`. |
 | `claude-roast.sh` | Claude Code Stop hook: prints a random dark/dev-humour roast as a system message after each turn. |
 | `copy-project-env.sh` | Copies gitignored env/config files (`.env`, etc.) from one git project directory to another. Used by `setup-project.sh` to sync env files into worktrees. |
 | `dev-env.sh` | Creates a tmux dev session with splits for a given project directory. Generic version of the project-specific dev scripts. |
