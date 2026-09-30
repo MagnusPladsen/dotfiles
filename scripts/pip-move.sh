@@ -1,10 +1,10 @@
 #!/bin/bash
-# Get current workspace
-current_workspace=$(aerospace list-workspaces --focused)
+# Move PiP windows on the focused monitor to the focused workspace, so PiP
+# follows you when switching workspaces. Runs on every workspace change, so it
+# uses AeroSpace's env var instead of querying, and makes one aerospace call
+# when there is no PiP window.
+current_workspace="${AEROSPACE_FOCUSED_WORKSPACE:-$(aerospace list-workspaces --focused)}"
 
-# Move PiP windows to current workspace, only if PiP window is on the same monitor as the new active workspace
-aerospace list-windows --monitor focused | grep -E "(Picture-in-Picture|Picture in Picture)" | awk '{print $1}' | while read window_id; do
-  if [ -n "$window_id" ]; then
-    aerospace move-node-to-workspace --window-id "$window_id" "$current_workspace"
-  fi
+aerospace list-windows --monitor focused | grep -E "(Picture-in-Picture|Picture in Picture)" | awk '{print $1}' | while read -r window_id; do
+  aerospace move-node-to-workspace --window-id "$window_id" "$current_workspace"
 done

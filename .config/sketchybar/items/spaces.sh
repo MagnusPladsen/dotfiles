@@ -17,7 +17,6 @@ for monitor in $(aerospace list-monitors --format "%{monitor-appkit-nsscreen-scr
     fi
 
     sketchybar --add item space.$sid left \
-      --subscribe space.$sid aerospace_workspace_change \
       --set space.$sid \
         display="$display_id" \
         drawing=on \
@@ -37,24 +36,13 @@ for monitor in $(aerospace list-monitors --format "%{monitor-appkit-nsscreen-scr
         label.padding_left=0 \
         label.y_offset=-1 \
         label.color=$WHITE \
-        click_script="aerospace workspace $sid" \
-        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+        click_script="aerospace workspace $sid"
   done
 done
 
-# Load workspace app icons on startup
-for monitor in $(aerospace list-monitors --format "%{monitor-appkit-nsscreen-screens-id}"); do
-  for sid in $(ws_list "$monitor"); do
-    apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
-
-    icon_strip=" "
-    if [ "${apps}" != "" ]; then
-      while read -r app; do
-        icon_strip+=" $($CONFIG_DIR/plugins/icon_map_fn.sh "$app")"
-      done <<<"${apps}"
-    else
-      icon_strip=""
-    fi
-    sketchybar --set space.$sid label="$icon_strip"
-  done
-done
+# One hidden item updates all workspace items per event (two aerospace calls
+# total). `sketchybar --update` at the end of sketchybarrc runs it on startup.
+sketchybar --add item spaces_updater left \
+  --set spaces_updater drawing=off updates=on \
+    script="$CONFIG_DIR/plugins/spaces_update.sh" \
+  --subscribe spaces_updater aerospace_workspace_change
