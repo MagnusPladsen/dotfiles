@@ -1,1 +1,0 @@
-/Users/magnuspladsen/scripts/run-aerospace-layout-manager.sh

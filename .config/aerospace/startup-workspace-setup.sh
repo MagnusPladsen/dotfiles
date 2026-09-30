@@ -1,1 +1,0 @@
-/Users/magnuspladsen/scripts/startup-workspace-setup.sh
