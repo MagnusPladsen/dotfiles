@@ -117,6 +117,12 @@ if.app-id = 'gg.leyline.Ember'
 check-further-callbacks = true
 run = 'layout floating'
 
+# DiceVaders
+[[on-window-detected]]
+if.app-id = 'com.Pengonauts.DiceVaders'
+check-further-callbacks = true
+run = 'layout floating'
+
 # Wine (all Wine-backed apps/games)
 [[on-window-detected]]
 if.app-name-regex-substring = 'wine'
