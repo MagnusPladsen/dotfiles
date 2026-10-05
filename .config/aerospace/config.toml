@@ -123,6 +123,12 @@ if.app-id = 'com.Pengonauts.DiceVaders'
 check-further-callbacks = true
 run = 'layout floating'
 
+# Shroom and Gloom
+[[on-window-detected]]
+if.app-id = 'com.Team-Lazerbeam.Shroom-and-Gloom'
+check-further-callbacks = true
+run = 'layout floating'
+
 # Cult of the Lamb
 [[on-window-detected]]
 if.app-id = 'com.Massive-Monster.Cult-Of-The-Lamb'
