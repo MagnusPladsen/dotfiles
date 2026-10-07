@@ -27,10 +27,8 @@
       "layout": "h_tiles",
       "windows": [
         {
-          "bundleId": "com.tinyspeck.slackmacgap"
-        },
-        {
-          "bundleId": "com.hnc.Discord"
+          "bundleId": "com.tinyspeck.slackmacgap",
+          "width": 40.2
         },
         {
           "bundleId": "ch.protonmail.desktop"
