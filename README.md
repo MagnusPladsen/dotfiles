@@ -26,7 +26,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | File | Purpose |
 |------|---------|
 | `config.toml` | AeroSpace tiling WM config (keybindings, gaps, workspace-monitor assignments, floating rules) |
-| `layouts.json` | App → workspace placement and root layout per workspace, read by `restore-workspaces.sh` |
+| `layouts.json` | App → workspace placement, root layout per workspace, and optional per-window `width` (percent of monitor width), read by `restore-workspaces.sh` |
 | `pip-move.sh` | Moves PiP windows to the focused workspace on workspace change |
 
 #### AeroSpace Keybindings
@@ -192,7 +192,7 @@ Key custom channels: `files`, `procs`, `dotfiles`, `git-worktrees`, `git-repos`,
 | `new-kitty-window.sh` | Opens a plain tiled Kitty window in the currently focused AeroSpace workspace. `new-kitty-window.sh [directory] [command...]` (directory defaults to `~`; an optional command runs inside the new window). Uses `--single-instance` so the window lands on the current workspace instead of spawning a second Kitty instance. Bound to `alt-t` (plain shell) and `alt-c` (`claude-op`). |
 | `pip-move.sh` | Moves Picture-in-Picture windows (Firefox/Edge) to the currently focused workspace so PiP follows you when switching workspaces. Runs automatically on workspace change. |
 | `popup-kitty.sh` | Floating Kitty popup manager (800x500, translucent, blurred, centered). `popup-kitty.sh <name> [program...]` opens the window once and focuses it on repeat presses. Defaults to `~/ai-sandbox`; override with `POPUP_DIR`. Currently unbound - `alt-c` now opens a tiled window via `new-kitty-window.sh`. |
-| `restore-workspaces.sh` | Moves each app in `~/.config/aerospace/layouts.json` to its workspace and sets each workspace's root layout. Reads all windows once, moves only misplaced ones, never changes focus, and launches listed apps that are not running. Bound to `alt-s`. |
+| `restore-workspaces.sh` | Moves each app in `~/.config/aerospace/layouts.json` to its workspace, sets each workspace's root layout, and applies any window `width` from the file. Reads all windows once, moves only misplaced ones, never changes focus, and launches listed apps that are not running. Bound to `alt-s`. |
 | `setup-project.sh` | Sets up a git worktree for development: copies env files from the main worktree, detects the package manager (bun/pnpm/yarn/npm), and installs dependencies. |
 | `start-claude-code.sh` | Cron-triggered script that runs `claude "hello world"` and logs the output. Used by the `com.user.claude-code-morning.plist` LaunchAgent. |
 | `tmux-lazygit.sh` | Opens lazygit in the current tmux pane's working directory. Used for tmux popup integration. |

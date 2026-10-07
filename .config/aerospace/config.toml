@@ -146,7 +146,7 @@ run = 'layout floating'
 if.app-name-regex-substring = 'Superset'
 run = ['layout tiling', 'move-node-to-workspace 4']
 
-# Proton Mail — always tile on workspace 3 (with Slack/Discord)
+# Proton Mail — always tile on workspace 3 (with Slack)
 [[on-window-detected]]
 if.app-id = 'ch.protonmail.desktop'
 run = ['layout tiling', 'move-node-to-workspace 3']
