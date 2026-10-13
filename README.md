@@ -50,6 +50,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | `alt-shift-minus/equal` | Resize window smaller/larger |
 | `alt-w` | Close focused window |
 | `alt-f` | Toggle fullscreen (focused window fills the workspace) |
+| `alt-q` | Toggle the workspace's floating windows into the background and back (`float-toggle.sh`) |
 
 **Workspaces**
 
@@ -186,6 +187,7 @@ Key custom channels: `files`, `procs`, `dotfiles`, `git-worktrees`, `git-repos`,
 | `dev-env.sh` | Creates a tmux dev session with splits for a given project directory. Generic version of the project-specific dev scripts. |
 | `work-dev.sh` | Starts a tmux dev session preconfigured for the project project (`~/git/project/`). |
 | `project-dev.sh` | Starts a tmux dev session preconfigured for the project project. |
+| `float-toggle.sh` | Moves the focused workspace's floating windows (except PiP) to a hidden `bg-<workspace>` stash; run again to bring them back with their positions intact. Bound to `alt-q`. |
 | `game-mode.sh` | Quits all running apps except Finder and Steam. Used via the `game-mode` alias. |
 | `install_aerospace.sh` | Installs AeroSpace tiling WM and `aerospace-layout-manager` via Homebrew. |
 | `install_sketchybar.sh` | Installs SketchyBar and its dependencies (sf-symbols, jq, gh, etc.) via Homebrew. |
