@@ -201,6 +201,14 @@ outer.right =      0
 4 = [2, "secondary"]
 5 = [2, "secondary"]
 6 = [2, "secondary"]
+# float-toggle.sh stashes: same monitor as their workspace, so stashed floating
+# windows never cross monitors and come back where they were
+bg-1 = "main"
+bg-2 = "main"
+bg-3 = "main"
+bg-4 = [2, "secondary"]
+bg-5 = [2, "secondary"]
+bg-6 = [2, "secondary"]
 
 [mode.main.binding]
 

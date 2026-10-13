@@ -15,8 +15,11 @@ if [ -n "$floating" ]; then
     aerospace move-node-to-workspace --window-id "$id" "$stash"
   done
 else
-  # list-windows errors when the stash workspace doesn't exist yet
+  # list-windows errors when the stash workspace doesn't exist yet.
+  # Moving alone leaves the window behind the focused tiled one, so focus it
+  # to raise it to the front.
   for id in $(aerospace list-windows --workspace "$stash" --format '%{window-id}' 2>/dev/null); do
-    aerospace move-node-to-workspace --window-id "$id" "$ws"
+    aerospace move-node-to-workspace --window-id "$id" "$ws" &&
+      aerospace focus --window-id "$id"
   done
 fi
