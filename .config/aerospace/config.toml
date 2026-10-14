@@ -141,6 +141,12 @@ if.app-id = 'com.Balatro.localthunk'
 check-further-callbacks = true
 run = 'layout floating'
 
+# Vampire Crawlers
+[[on-window-detected]]
+if.app-id = 'com.poncle.vampirecrawlers'
+check-further-callbacks = true
+run = 'layout floating'
+
 # Wine (all Wine-backed apps/games)
 [[on-window-detected]]
 if.app-name-regex-substring = 'wine'
