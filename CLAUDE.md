@@ -5,7 +5,7 @@
 - **Bare git repo** at `~/.dotfiles/` — always use the `dotfiles` alias, NEVER regular `git`
 - Workflow: `dotfiles add <file> && dotfiles commit -m "msg" && dotfiles push`
 - `.gitignore` uses allowlist pattern: `/*` ignores everything, `!` exceptions whitelist tracked files
-- **Tracked:** `.vimrc`, `.zshrc`, `.tmux.conf`, `.gitignore`, `.claude/{settings.json,output-styles/}`, `.claude/{mods,skills}/` (submodules: private `claude-mods` / `claude-skills` repos — commit inside them with plain `git`, then bump the pointer with `dotfiles`), `scripts/`, `LaunchAgents/`, `fzf-git.sh/`, `.config/{nvim,espanso,sketchybar,ghostty,aerospace,borders,lazygit,zed,television}/`
+- **Tracked:** `.vimrc`, `.zshrc`, `.tmux.conf`, `.gitignore`, `.claude/{settings.json,output-styles/}`, `.claude/{mods,skills}/` (submodules: public `claude-mods` / `claude-skills` repos — commit inside them with plain `git`, then bump the pointer with `dotfiles`), `scripts/`, `LaunchAgents/`, `fzf-git.sh/`, `.config/{nvim,espanso,sketchybar,ghostty,aerospace,borders,lazygit,zed,television}/`
 - **Not tracked (intentional):** `.gitconfig` (machine-specific), `.p10k.zsh`
 - **TODO:** `.config/kitty/` should be added to dotfiles tracking (currently missing)
 - **README:** `~/README.md` documents all tracked configs, scripts, aliases, and keybindings
