@@ -86,10 +86,8 @@ _fzf_comprun() {
 }
 
 # ── Helper functions ─────────────────────────────────────────────
-# Azure DevOps PR shortcut
-azpr() {
-  open "https://dev.azure.com/ORG/PROJECT/_git/REPO/pullrequestcreate?sourceRef=$(git branch --show-current)&targetRef=${1:-main}"
-}
+# Machine-local, untracked helpers (work-specific shortcuts like azpr)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # Git worktree helpers (wt / wt-close)
 source ~/scripts/worktrees.sh

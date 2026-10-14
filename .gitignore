@@ -49,3 +49,7 @@ ai-sandbox/*
 *-lock*
 # Zed database lock files, rewritten on every launch
 .config/zed/**/lock.mdb
+# Machine-local, work-specific or state files (kept on disk, never published)
+scripts/work/
+.config/kitty/sessions/
+.config/lazygit/state.yml

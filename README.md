@@ -10,7 +10,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 
 | File | Purpose |
 |------|---------|
-| `.zshrc` | Zsh config (Oh My Zsh + Powerlevel10k, aliases, plugins, shell integrations) |
+| `.zshrc` | Zsh config (Oh My Zsh + Powerlevel10k, aliases, plugins, shell integrations). Sources the untracked, machine-local `~/.zshrc.local` for work-specific helpers when present |
 | `.vimrc` | Vim configuration |
 | `.tmux.conf` | tmux configuration |
 | `.gitignore` | Dotfiles allowlist (bare repo pattern: `/*` + `!` exceptions) |
@@ -146,7 +146,6 @@ Tracked as a submodule (Lazy.nvim-based config).
 | File | Purpose |
 |------|---------|
 | `config.yml` | Lazygit configuration |
-| `state.yml` | Lazygit state |
 
 ### Zed — `.config/zed/`
 
@@ -187,9 +186,7 @@ Key custom channels: `files`, `procs`, `dotfiles`, `git-worktrees`, `git-repos`,
 |--------|---------|
 | `claude-roast.sh` | Claude Code Stop hook: prints a random dark/dev-humour roast as a system message after each turn. |
 | `copy-project-env.sh` | Copies gitignored env/config files (`.env`, etc.) from one git project directory to another. Used by `setup-project.sh` to sync env files into worktrees. |
-| `dev-env.sh` | Creates a tmux dev session with splits for a given project directory. Generic version of the project-specific dev scripts. |
-| `work-dev.sh` | Starts a tmux dev session preconfigured for the project project (`~/git/project/`). |
-| `project-dev.sh` | Starts a tmux dev session preconfigured for the project project. |
+| `dev-env.sh` | Creates a tmux dev session with splits for a given project directory. Work-specific dev scripts live in the untracked `scripts/work/`. |
 | `float-toggle.sh` | Moves the focused workspace's floating windows (except PiP) to a hidden `bg-<workspace>` stash; run again to bring them back with their positions intact. Bound to `alt-q`. |
 | `game-mode.sh` | Quits all running apps except Finder and Steam. Used via the `game-mode` alias. |
 | `install_aerospace.sh` | Installs AeroSpace tiling WM and `aerospace-layout-manager` via Homebrew. |
@@ -233,9 +230,9 @@ Key custom channels: `files`, `procs`, `dotfiles`, `git-worktrees`, `git-repos`,
 | `sketchybar/` | SketchyBar status bar — bar items (battery, clock, cpu, spaces, wifi, etc.), plugins, colors, and icons |
 | `borders/` | JankyBorders — window border decoration config |
 | `ghostty/` | Ghostty terminal emulator config |
-| `kitty/` | Kitty terminal emulator — config, color theme (Monokai Pro Spectrum), session layouts |
+| `kitty/` | Kitty terminal emulator — config and color theme (Monokai Pro Spectrum); session layouts in `sessions/` are untracked |
 | `nvim/` | Neovim config (Lazy.nvim-based, tracked as git submodule) |
-| `lazygit/` | Lazygit TUI git client — config and state |
+| `lazygit/` | Lazygit TUI git client — config (`state.yml` is untracked) |
 | `zed/` | Zed editor — settings, keybindings, and task definitions |
 | `espanso/` | Espanso text expander — global config and text expansion rules |
 | `television/` | Television (tv) fuzzy finder — global config, keybindings, shell integration, and 60+ channel definitions |

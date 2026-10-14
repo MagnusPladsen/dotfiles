@@ -22,7 +22,9 @@
 | `~/.claude/rules/` | Claude Code global rules (submodule `claude-rules`) |
 | `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault` | Personal Obsidian vault — use `claude-notes` alias |
 
-Work Obsidian vault is in the same iCloud path under "Work" folder (has its own CLAUDE.md).
+Work-specific context (work remotes, work vault, work helpers) lives in an untracked file:
+
+@.claude/work-context.md
 
 ## Shell Environment
 
@@ -193,7 +195,7 @@ alone would collapse.
 ## Development Context
 
 - **Personal GitHub:** MagnusPladsen
-- **Work:** dev.azure.com/project, bitbucket.org/ORG
+- **Work:** see the untracked work context imported above
 - **Languages:** TypeScript/JS, Python, Rust, C#
 - **Git:** delta for diffs, worktree aliases (`wta`, `wtl`, `wtr`)
 - **Git identity per repo:** the global `user.email` is the work address. Personal repos

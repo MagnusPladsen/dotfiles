@@ -19,8 +19,8 @@ No action needed for these — omp already has them in context:
 
 ## Rules loaded on demand
 
-`~/.claude/rules/` holds 34 topic rules (symlinks into
-`~/.work/.claude/rules/`). They are NOT auto-loaded here — Claude Code
+`~/.claude/rules/` holds 34 topic rules (the public `claude-rules`
+submodule). They are NOT auto-loaded here — Claude Code
 glob-matches them per edited file, omp has no equivalent and no `@file` import
 syntax. Read the relevant one yourself before working in its domain:
 
