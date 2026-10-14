@@ -7,3 +7,6 @@
 [submodule ".claude/skills"]
 	path = .claude/skills
 	url = https://github.com/MagnusPladsen/claude-skills.git
+[submodule ".claude/rules"]
+	path = .claude/rules
+	url = https://github.com/MagnusPladsen/claude-rules.git

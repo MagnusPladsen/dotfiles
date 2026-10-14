@@ -14,11 +14,12 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | `.vimrc` | Vim configuration |
 | `.tmux.conf` | tmux configuration |
 | `.gitignore` | Dotfiles allowlist (bare repo pattern: `/*` + `!` exceptions) |
-| `.gitmodules` | Git submodules (`.config/nvim`, `.claude/mods`, `.claude/skills`) |
+| `.gitmodules` | Git submodules (`.config/nvim`, `.claude/mods`, `.claude/skills`, `.claude/rules`) |
 | `CLAUDE.md` | Claude Code instructions for the home directory (dotfile workflow, key paths, cmux/tv reference, behavior and response-formatting rules) |
 | `.claude/settings.json` | Claude Code user settings: hooks, plugins, status line, and custom `spinnerVerbs` and `spinnerTipsOverride` (dark/dev-humour spinner lines and tips), `companyAnnouncements` (random startup roast), a Stop hook for `claude-roast.sh`, the `Grumpy Norwegian Sysadmin` output style, and `CLAUDE_CODE_PLUGIN_DIRS` loading `.claude/mods/` |
 | `.claude/mods/` | Submodule ([claude-mods](https://github.com/MagnusPladsen/claude-mods), public). Claude Code mods (function-hook plugins), loaded in every session via `CLAUDE_CODE_PLUGIN_DIRS` in `settings.json` and hot-reloaded on save. `usage-warn` warns at every 10% of the 5-hour and 7-day usage windows from 50%, with a pace forecast, a status line and a notification plus chime at 90% (all configurable in `/config`); `filetree-collapsible` is a local fork of data-goblin's filetree pane with a collapse-to-strip button |
 | `.claude/skills/` | Submodule ([claude-skills](https://github.com/MagnusPladsen/claude-skills), public). Magnus Pladsen kit global Claude Code skills: git and ticket workflow (`new-issue`, `commit`, `list-commits`, `create-pr`, `pr-description`, `changelog`, `workdayrecap`), engineering workflow (`planning-with-issues`, `debug`, `refactor`, `review`, `test`, `test-run`, `document`, `onboard`, `todo`), .NET (`add-migration`, `validate-architecture`), plus `frontend-design` and `dance`. Installer-managed TWG, Superset and synced skills share the directory but are gitignored in the submodule |
+| `.claude/rules/` | Submodule ([claude-rules](https://github.com/MagnusPladsen/claude-rules), public). Magnus Pladsen kit global Claude Code rules: shared (code quality, minimal diff, security, logging, naming, testing, commit/PR conventions, `no-auto-push`, `dotfiles-docs`), integrations (`github`, `azure-devops`, `bitbucket`, `jira`), React/TypeScript and .NET/C#. Cursor-style frontmatter so `~/.continue/rules` and `~/.config/crush/rules` can symlink the same files |
 | `.claude/output-styles/` | Claude Code output styles. `grumpy-norwegian-sysadmin.md` keeps all work and formatting rules but answers as a deadpan Norwegian sysadmin |
 
 ### Window Management — `.config/aerospace/`

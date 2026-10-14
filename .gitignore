@@ -16,6 +16,7 @@
 !.claude/output-styles/
 !.claude/mods
 !.claude/skills
+!.claude/rules
 .config/*
 .config/espanso/match/priv.yml
 !.config/nvim/
