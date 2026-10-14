@@ -196,3 +196,9 @@ alone would collapse.
 - **Work:** dev.azure.com/project, bitbucket.org/ORG
 - **Languages:** TypeScript/JS, Python, Rust, C#
 - **Git:** delta for diffs, worktree aliases (`wta`, `wtl`, `wtr`)
+- **Git identity per repo:** the global `user.email` is the work address. Personal repos
+  (remote under `github.com/MagnusPladsen/`, including the dotfiles bare repo and its
+  submodules) must commit as `Magnus Pladsen <93226629+MagnusPladsen@users.noreply.github.com>`.
+  Before the first commit in a personal repo, check `git config user.email`; if it is the work
+  address, set the no-reply address with `git config --local user.email`. Never let the work
+  email land in a personal repo's history.
