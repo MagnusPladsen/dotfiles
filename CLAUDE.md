@@ -5,7 +5,7 @@
 - **Bare git repo** at `~/.dotfiles/` — always use the `dotfiles` alias, NEVER regular `git`
 - Workflow: `dotfiles add <file> && dotfiles commit -m "msg" && dotfiles push`
 - `.gitignore` uses allowlist pattern: `/*` ignores everything, `!` exceptions whitelist tracked files
-- **Tracked:** `.vimrc`, `.zshrc`, `.tmux.conf`, `.gitignore`, `.claude/{settings.json,output-styles/}`, `scripts/`, `LaunchAgents/`, `fzf-git.sh/`, `.config/{nvim,espanso,sketchybar,ghostty,aerospace,borders,lazygit,zed,television}/`
+- **Tracked:** `.vimrc`, `.zshrc`, `.tmux.conf`, `.gitignore`, `.claude/{settings.json,output-styles/}`, `.claude/{mods,skills}/` (submodules: private `claude-mods` / `claude-skills` repos — commit inside them with plain `git`, then bump the pointer with `dotfiles`), `scripts/`, `LaunchAgents/`, `fzf-git.sh/`, `.config/{nvim,espanso,sketchybar,ghostty,aerospace,borders,lazygit,zed,television}/`
 - **Not tracked (intentional):** `.gitconfig` (machine-specific), `.p10k.zsh`
 - **TODO:** `.config/kitty/` should be added to dotfiles tracking (currently missing)
 - **README:** `~/README.md` documents all tracked configs, scripts, aliases, and keybindings
@@ -17,7 +17,8 @@
 | `~/git/` | Repos (worktrees in `~/git/*-worktrees/`) |
 | `~/scripts/` | Personal scripts |
 | `~/.config/` | App configs (aerospace, sketchybar, kitty, ghostty, nvim, lazygit, zed, borders, espanso, television) |
-| `~/.claude/skills/` | Claude Code skills |
+| `~/.claude/skills/` | Claude Code skills (submodule `claude-skills`; third-party skills gitignored) |
+| `~/.claude/mods/` | Claude Code mods (submodule `claude-mods`) |
 | `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault` | Personal Obsidian vault — use `claude-notes` alias |
 
 Work Obsidian vault is in the same iCloud path under "Work" folder (has its own CLAUDE.md).

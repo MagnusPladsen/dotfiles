@@ -14,7 +14,8 @@
 .claude/*
 !.claude/settings.json
 !.claude/output-styles/
-!.claude/mods/
+!.claude/mods
+!.claude/skills
 .config/*
 .config/espanso/match/priv.yml
 !.config/nvim/
