@@ -16,7 +16,8 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | `.gitignore` | Dotfiles allowlist (bare repo pattern: `/*` + `!` exceptions) |
 | `.gitmodules` | Git submodules |
 | `CLAUDE.md` | Claude Code instructions for the home directory (dotfile workflow, key paths, cmux/tv reference, behavior and response-formatting rules) |
-| `.claude/settings.json` | Claude Code user settings: hooks, plugins, status line, and custom `spinnerVerbs` and `spinnerTipsOverride` (dark/dev-humour spinner lines and tips), `companyAnnouncements` (random startup roast), a Stop hook for `claude-roast.sh`, and the `Grumpy Norwegian Sysadmin` output style |
+| `.claude/settings.json` | Claude Code user settings: hooks, plugins, status line, and custom `spinnerVerbs` and `spinnerTipsOverride` (dark/dev-humour spinner lines and tips), `companyAnnouncements` (random startup roast), a Stop hook for `claude-roast.sh`, the `Grumpy Norwegian Sysadmin` output style, and `CLAUDE_CODE_PLUGIN_DIRS` loading `.claude/mods/` |
+| `.claude/mods/` | Claude Code mods (function-hook plugins), loaded in every session via `CLAUDE_CODE_PLUGIN_DIRS` in `settings.json` and hot-reloaded on save. `usage-warn` toasts at every 10% of the 5-hour usage window from 50% (native notification at 90%); `filetree-collapsible` is a local fork of data-goblin's filetree pane with a collapse-to-strip button |
 | `.claude/output-styles/` | Claude Code output styles. `grumpy-norwegian-sysadmin.md` keeps all work and formatting rules but answers as a deadpan Norwegian sysadmin |
 
 ### Window Management — `.config/aerospace/`

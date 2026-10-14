@@ -1,0 +1,1 @@
+{ "name": "usage-warn", "version": "0.1.0", "description": "Warns at every 10% step of the 5-hour usage window from 50%" }

@@ -1,14 +1,16 @@
 {
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "_ZO_DOCTOR": "0"
+    "_ZO_DOCTOR": "0",
+    "CLAUDE_CODE_ENABLE_FUNCTION_HOOKS": "1",
+    "CLAUDE_CODE_PLUGIN_DIRS": "~/.claude/mods/usage-warn:~/.claude/mods/filetree-collapsible"
   },
   "permissions": {
     "allow": [
       "mcp__pencil"
     ]
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
@@ -52,7 +54,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ -n \"$SUPERSET_HOME_DIR\" ] && [ -x \"$SUPERSET_HOME_DIR/hooks/notify.sh\" ] && SUPERSET_HOOK_HARNESS=claude \"$SUPERSET_HOME_DIR/hooks/notify.sh\" || true"
+            "command": "bash \"$HOME/scripts/claude-roast.sh\""
           }
         ]
       },
@@ -60,7 +62,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME/scripts/claude-roast.sh\""
+            "command": "[ -n \"$SUPERSET_HOME_DIR\" ] && [ -x \"$SUPERSET_HOME_DIR/hooks/notify.sh\" ] && SUPERSET_HOOK_HARNESS=claude \"$SUPERSET_HOME_DIR/hooks/notify.sh\" || true"
           }
         ]
       }
@@ -173,19 +175,32 @@
     "ui-ux-pro-max@ui-ux-pro-max-skill": true,
     "context7@claude-plugins-official": true,
     "atlassian@claude-plugins-official": true,
-    "figma@claude-plugins-official": true
+    "figma@claude-plugins-official": true,
+    "cache-tax@claude-code-mods": true,
+    "filetree@claude-code-filetree": false,
+    "replay-theater@claude-code-playground-mods": true
   },
-  "effortLevel": "high",
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "high"
+  "extraKnownMarketplaces": {
+    "claude-code-mods": {
+      "source": {
+        "source": "github",
+        "repo": "karanb192/claude-code-mods"
+      }
+    },
+    "claude-code-filetree": {
+      "source": {
+        "source": "github",
+        "repo": "data-goblin/claude-code-filetree"
+      }
+    },
+    "claude-code-playground-mods": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/magnuspladsen/git/claude-code-playground/claude-code/mods"
+      }
     }
   },
-  "tui": "fullscreen",
-  "skipDangerousModePermissionPrompt": true,
-  "autoCompactEnabled": true,
-  "switchModelsOnFlag": true,
-  "agentPushNotifEnabled": true,
+  "outputStyle": "Grumpy Norwegian Sysadmin",
   "spinnerVerbs": {
     "mode": "replace",
     "verbs": [
@@ -262,6 +277,12 @@
       "Kubernetes: because one thing going wrong was not enough."
     ]
   },
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "companyAnnouncements": [
     "Welcome back. The bugs missed you. Nobody else did.",
     "Another day, another chance to break prod.",
@@ -278,5 +299,21 @@
     "Coffee first. Then we ruin something.",
     "Initialising. Please hold while I lower my standards."
   ],
-  "outputStyle": "Grumpy Norwegian Sysadmin"
+  "pluginConfigs": {
+    "filetree@claude-code-filetree": {
+      "options": {
+        "activity": "reads and writes",
+        "glyphs": "auto",
+        "follow": "on",
+        "start": "on",
+        "column": "date",
+        "hints": "on"
+      }
+    }
+  },
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
+  "autoCompactEnabled": true,
+  "switchModelsOnFlag": true,
+  "agentPushNotifEnabled": true
 }
