@@ -3,7 +3,7 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "_ZO_DOCTOR": "0",
     "CLAUDE_CODE_ENABLE_FUNCTION_HOOKS": "1",
-    "CLAUDE_CODE_PLUGIN_DIRS": "~/.claude/mods/usage-warn:~/.claude/mods/filetree-collapsible"
+    "CLAUDE_CODE_PLUGIN_DIRS": "~/.claude/mods/usage-warn"
   },
   "permissions": {
     "allow": [
@@ -178,7 +178,8 @@
     "figma@claude-plugins-official": true,
     "cache-tax@claude-code-mods": true,
     "filetree@claude-code-filetree": false,
-    "replay-theater@claude-code-playground-mods": true
+    "replay-theater@claude-code-playground-mods": true,
+    "swift-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "claude-code-mods": {
@@ -280,7 +281,8 @@
   "effortLevel": "high",
   "modelSettings": {
     "claude-opus-5-5": {
-      "effortLevel": "high"
+      "effortLevel": "high",
+      "autoCompactWindow": 400000
     }
   },
   "companyAnnouncements": [
@@ -300,6 +302,11 @@
     "Initialising. Please hold while I lower my standards."
   ],
   "pluginConfigs": {
+    "filetree-collapsible": {
+      "options": {
+        "open": "zed {path}"
+      }
+    },
     "filetree@claude-code-filetree": {
       "options": {
         "activity": "reads and writes",
