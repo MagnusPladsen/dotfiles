@@ -80,6 +80,12 @@ if.app-id = 'com.apple.ActivityMonitor'
 check-further-callbacks = true
 run = 'layout floating'
 
+# Games
+[[on-window-detected]]
+if.app-id = 'com.poncle.VampireSurvivors'
+check-further-callbacks = true
+run = 'layout floating'
+
 # PiP firefox
 [[on-window-detected]]
 if.window-title-regex-substring = 'Picture-In-Picture'
