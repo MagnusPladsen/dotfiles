@@ -159,6 +159,17 @@ if.app-name-regex-substring = 'wine'
 check-further-callbacks = true
 run = 'layout floating'
 
+# Godot — tile the editor window ("<scene> - <project> - Godot Engine")
+[[on-window-detected]]
+if.app-id = 'org.godotengine.godot'
+if.window-title-regex-substring = 'Godot Engine'
+run = 'layout tiling'
+
+# Godot — float every other window (dialogs, settings, running game)
+[[on-window-detected]]
+if.app-id = 'org.godotengine.godot'
+run = 'layout floating'
+
 # Superset — always tile on workspace 4
 [[on-window-detected]]
 if.app-name-regex-substring = 'Superset'
