@@ -32,6 +32,9 @@
         },
         {
           "bundleId": "ch.protonmail.desktop"
+        },
+        {
+          "bundleId": "com.hnc.Discord"
         }
       ]
     },
@@ -41,6 +44,24 @@
       "windows": [
         {
           "bundleId": "com.superset.desktop"
+        }
+      ]
+    },
+    "terminal": {
+      "workspace": "5",
+      "layout": "tiles",
+      "windows": [
+        {
+          "bundleId": "net.kovidgoyal.kitty"
+        }
+      ]
+    },
+    "godot": {
+      "workspace": "6",
+      "layout": "tiles",
+      "windows": [
+        {
+          "bundleId": "org.godotengine.godot"
         }
       ]
     }
