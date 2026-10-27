@@ -159,6 +159,12 @@ if.app-name-regex-substring = 'wine'
 check-further-callbacks = true
 run = 'layout floating'
 
+# Wine games that report the .exe as app name (no bundle id)
+[[on-window-detected]]
+if.app-name-regex-substring = '\.exe$'
+check-further-callbacks = true
+run = 'layout floating'
+
 # Godot — tile the editor window ("<scene> - <project> - Godot Engine")
 [[on-window-detected]]
 if.app-id = 'org.godotengine.godot'
@@ -279,6 +285,10 @@ alt-f = 'fullscreen'
 # Toggle this workspace's floating windows into a hidden stash and back.
 # See ~/scripts/float-toggle.sh
 alt-q = 'exec-and-forget $HOME/scripts/float-toggle.sh'
+
+# Snap Emberward to the top-right corner of the secondary monitor.
+# See ~/scripts/emberward-corner.sh
+alt-e = 'exec-and-forget $HOME/scripts/emberward-corner.sh'
 
 alt-shift-left = 'join-with left'
 alt-shift-down = 'join-with down'

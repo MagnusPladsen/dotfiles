@@ -54,6 +54,7 @@ Managed via bare git repo at `~/.dotfiles/`. Use the `dotfiles` alias for all gi
 | `alt-w` | Close focused window |
 | `alt-f` | Toggle fullscreen (focused window fills the workspace) |
 | `alt-q` | Toggle the workspace's floating windows into the background and back (`float-toggle.sh`) |
+| `alt-e` | Snap the Emberward (Wine) window to the top-right corner of the secondary monitor (`emberward-corner.sh`) |
 
 **Workspaces**
 
@@ -187,6 +188,7 @@ Key custom channels: `files`, `procs`, `dotfiles`, `git-worktrees`, `git-repos`,
 | `claude-roast.sh` | Claude Code Stop hook: prints a random dark/dev-humour roast as a system message after each turn. |
 | `copy-project-env.sh` | Copies gitignored env/config files (`.env`, etc.) from one git project directory to another. Used by `setup-project.sh` to sync env files into worktrees. |
 | `dev-env.sh` | Creates a tmux dev session with splits for a given project directory. Work-specific dev scripts live in the untracked `scripts/work/`. |
+| `emberward-corner.sh` | Floats the Emberward (Wine) window, moves it to the secondary monitor and snaps it to the top-right corner under SketchyBar, using its current size (the game resizes on resolution changes). Bound to `alt-e`. |
 | `float-toggle.sh` | Moves the focused workspace's floating windows (except PiP) to a hidden `bg-<workspace>` stash; run again to bring them back with their positions intact. Bound to `alt-q`. |
 | `game-mode.sh` | Quits all running apps except Finder and Steam. Used via the `game-mode` alias. |
 | `install_aerospace.sh` | Installs AeroSpace tiling WM and `aerospace-layout-manager` via Homebrew. |
