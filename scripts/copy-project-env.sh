@@ -27,6 +27,10 @@ echo "🔍 Scanning for gitignored env/config files in $source_dir..."
 for item in "$source_dir"/.*; do
     name=$(basename "$item")
     [[ "$name" == "." || "$name" == ".." || "$name" == ".git" ]] && continue
+    # Skip OS junk, build caches and worktree folders
+    case "$name" in
+        .DS_Store|.next|.turbo|.cache|.venv|.idea|.vs|.worktrees|.superset) continue ;;
+    esac
     if git -C "$source_dir" check-ignore -q "$item" 2>/dev/null; then
         if [ -d "$item" ]; then
             cp -R "$item" "$target_dir/$name"
@@ -42,29 +46,34 @@ done
 
 # Copy gitignored .claude files (e.g. settings.local.json)
 if [ -d "$source_dir/.claude" ]; then
-    claude_ignored=$(cd "$source_dir" && find .claude -type f 2>/dev/null | while read -r f; do
+    claude_ignored=$(cd "$source_dir" && find .claude -path .claude/worktrees -prune -o -type f -print 2>/dev/null | while read -r f; do
         git check-ignore -q "$f" 2>/dev/null && echo "$f"
     done) || true
     if [ -n "$claude_ignored" ]; then
-        echo "$claude_ignored" | while IFS= read -r file; do
+        while IFS= read -r file; do
             mkdir -p "$target_dir/$(dirname "$file")"
             cp "$source_dir/$file" "$target_dir/$file"
             echo "📋 Copied $file"
             copied_count=$((copied_count + 1))
-        done
+        done <<< "$claude_ignored"
     fi
 fi
 
 # Copy gitignored config files (appsettings, .env variants, docker overrides, etc.)
-config_files=$(git -C "$source_dir" ls-files --others --ignored --exclude-standard 2>/dev/null | \
+# --directory lists an ignored folder (node_modules, worktrees) as one entry instead of every file in it;
+# worktree folders and backups such as .env.bak-* are left out.
+config_files=$(git -C "$source_dir" ls-files --others --ignored --exclude-standard --directory 2>/dev/null | \
+    grep -vE '(^|/)(\.claude/worktrees|\.worktrees|node_modules)/|\.(bak|orig|old)([-.]|$)' | \
     grep -iE '(appsettings\..+\.json$|\.env(\.|$)|local\.settings\.json$|secrets\.json$|\.user$|docker-compose\.override\.ya?ml$|application-.+\.(properties|ya?ml)$|local_settings\.py$|\.dev\.vars$|wrangler\.toml$)') || true
 if [ -n "$config_files" ]; then
-    echo "$config_files" | while IFS= read -r file; do
+    while IFS= read -r file; do
+        # Root dotfiles were already copied by the first loop
+        [[ "$file" != */* && "$file" == .* ]] && continue
         mkdir -p "$target_dir/$(dirname "$file")"
         cp "$source_dir/$file" "$target_dir/$file"
         echo "📋 Copied $file"
         copied_count=$((copied_count + 1))
-    done
+    done <<< "$config_files"
 fi
 
 if [ "$copied_count" -eq 0 ]; then
