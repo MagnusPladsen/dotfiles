@@ -178,7 +178,7 @@ run = 'layout floating'
 
 # Paradev — always tile on workspace 4
 [[on-window-detected]]
-if.app-id = 'com.superset.desktop'
+if.app-name-regex-substring = 'Paradev'
 run = ['layout tiling', 'move-node-to-workspace 4']
 
 # Proton Mail — always tile on workspace 3 (with Slack)
