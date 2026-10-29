@@ -9,6 +9,7 @@ CLOCK_CLICK="osascript -e 'tell application \"System Events\" to tell process \"
 sketchybar --add item clock right \
   --set clock \
     update_freq=10 \
+    padding_right=12 \
     label.color=$PEACH \
     label.font="$FONT:Std Rg:11.0" \
     script="$PLUGIN_DIR/clock.sh" \
