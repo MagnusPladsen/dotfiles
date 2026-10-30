@@ -45,6 +45,7 @@ ai-sandbox/*
 
 !DOTFILES.md
 !/CLAUDE.md
+!Brewfile
 
 *-lock*
 # Zed database lock files, rewritten on every launch
